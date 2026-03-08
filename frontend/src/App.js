@@ -4394,7 +4394,7 @@ function App() {
   const fetchNewsSources = useCallback(async () => {
     setNewsSourcesLoading(true);
     try {
-      let url = `${API_URL}/api/news-intelligence/sources/full`;
+      let url = `${API_URL}/api/news-intelligence/sources-registry`;
       const params = [];
       if (newsSourcesFilter.tier) params.push(`tier=${newsSourcesFilter.tier}`);
       if (newsSourcesFilter.language) params.push(`language=${newsSourcesFilter.language}`);
