@@ -1428,22 +1428,25 @@ function App() {
                       <span 
                         className="px-2 py-0.5 rounded-full text-xs flex items-center gap-1"
                         style={{ backgroundColor: colors.successSoft, color: colors.success }}
+                        title="Source is working correctly"
                       >
                         <CheckCircle size={10} />
                         Active
                       </span>
-                    ) : source.status === 'degraded' ? (
+                    ) : source.status === 'degraded' || source.status === 'needs_key' ? (
                       <span 
                         className="px-2 py-0.5 rounded-full text-xs flex items-center gap-1"
                         style={{ backgroundColor: colors.warningSoft || '#FEF3C7', color: colors.warning || '#F59E0B' }}
+                        title={source.last_check?.message || "API key required for full access"}
                       >
-                        <AlertCircle size={10} />
+                        <Key size={10} />
                         Key Required
                       </span>
                     ) : source.status === 'error' || source.status === 'offline' ? (
                       <span 
                         className="px-2 py-0.5 rounded-full text-xs flex items-center gap-1"
                         style={{ backgroundColor: colors.dangerSoft || '#FEE2E2', color: colors.danger || '#EF4444' }}
+                        title={source.last_check?.message || "Source is offline"}
                       >
                         <XCircle size={10} />
                         Offline
@@ -1452,6 +1455,7 @@ function App() {
                       <span 
                         className="px-2 py-0.5 rounded-full text-xs flex items-center gap-1"
                         style={{ backgroundColor: colors.dangerSoft || '#FEE2E2', color: colors.warning || '#F59E0B' }}
+                        title={source.last_check?.message || "Request timeout"}
                       >
                         <Clock size={10} />
                         Timeout
@@ -1460,11 +1464,27 @@ function App() {
                       <span 
                         className="px-2 py-0.5 rounded-full text-xs"
                         style={{ backgroundColor: colors.surface, color: colors.textMuted }}
+                        title="Not yet configured"
                       >
                         Planned
                       </span>
                     )}
                   </div>
+                  {/* Status reason - показываем причину если не active */}
+                  {source.status !== 'active' && source.last_check?.message && (
+                    <div 
+                      className="text-xs px-2 py-1 rounded mb-2 truncate"
+                      style={{ 
+                        backgroundColor: source.status === 'error' || source.status === 'offline' || source.status === 'timeout' 
+                          ? colors.dangerSoft || '#FEE2E2' 
+                          : colors.warningSoft || '#FEF3C7',
+                        color: colors.textSecondary 
+                      }}
+                      title={source.last_check.message}
+                    >
+                      {source.last_check.message}
+                    </div>
+                  )}
                   <div className="flex flex-wrap gap-1 mb-2">
                     {source.categories?.slice(0, 3).map(cat => (
                       <span 
