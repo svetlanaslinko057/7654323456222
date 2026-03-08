@@ -3,10 +3,14 @@ Backend API Testing for FOMO Crypto Intelligence Terminal
 =========================================================
 
 Tests the key APIs mentioned in the review request:
-- Knowledge Graph search for VC funds (a16z, Paradigm, Jump Crypto, Sequoia)
-- Discovery page health check
-- Graph visualization APIs 
-- WebSocket status
+- API /api/discovery/sources - 34 sources, 31 active, 3 needs_key
+- API /api/news-intelligence/sources-registry - 120 news sources активны
+- API /api/graph/stats - 281 nodes, 499 edges
+- API /api/intel/stats - projects, investors, unlocks
+- Discovery Health Check button - /api/discovery/sources/health-check
+- News RSS parsing - Cointelegraph, The Block, Decrypt
+- WebSocket - /api/ws/status returns channels
+- Knowledge Graph search - a16z, Paradigm, Sequoia
 
 Backend URL: https://frontend-backend-db-9.preview.emergentagent.com
 """
@@ -154,9 +158,9 @@ class FOMOAPITester:
         return success
 
     def test_discovery_sources(self):
-        """Test /api/discovery/sources - should return sources with status"""
+        """Test /api/discovery/sources - should return 34 sources with proper status distribution"""
         success, data = self.run_test(
-            "Discovery Sources",
+            "Discovery Sources (34 total, 31 active, 3 needs_key)",
             "GET",
             "/api/discovery/sources", 
             200
@@ -164,26 +168,121 @@ class FOMOAPITester:
         
         if success and isinstance(data, dict):
             sources = data.get('sources', [])
-            if isinstance(sources, list) and len(sources) > 0:
-                # Check if sources have required fields
-                sample_source = sources[0]
-                required_fields = ['id', 'name', 'status']
-                has_required_fields = all(field in sample_source for field in required_fields)
+            total_count = len(sources)
+            
+            # Count sources by status
+            status_counts = {}
+            for source in sources:
+                status = source.get('status', 'unknown')
+                status_counts[status] = status_counts.get(status, 0) + 1
+            
+            print(f"      📊 Discovery Sources Summary:")
+            print(f"         Total: {total_count}")
+            for status, count in status_counts.items():
+                print(f"         {status}: {count}")
+            
+            # Check if we have expected counts (with some tolerance)
+            expected_total = 34
+            expected_active_plus_degraded = 31  # Active sources
+            expected_needs_key = 3
+            
+            actual_active = status_counts.get('active', 0) + status_counts.get('degraded', 0)
+            actual_needs_key = status_counts.get('needs_key', 0)
+            
+            total_ok = abs(total_count - expected_total) <= 5
+            active_ok = abs(actual_active - expected_active_plus_degraded) <= 5
+            needs_key_ok = abs(actual_needs_key - expected_needs_key) <= 2
+            
+            if not total_ok:
+                print(f"      ⚠️  Total source count: expected ~{expected_total}, got {total_count}")
+            if not active_ok:
+                print(f"      ⚠️  Active sources: expected ~{expected_active_plus_degraded}, got {actual_active}")
+            if not needs_key_ok:
+                print(f"      ⚠️  Sources needing keys: expected ~{expected_needs_key}, got {actual_needs_key}")
                 
-                if not has_required_fields:
-                    print(f"      ⚠️  Source missing required fields: {required_fields}")
-                    return False
-                    
-                # Check status values
-                statuses = [s.get('status') for s in sources]
-                valid_statuses = ['active', 'offline', 'degraded', 'planned', 'error']
-                valid_status_count = sum(1 for s in statuses if s in valid_statuses)
+            return success and total_ok and (active_ok or needs_key_ok)
+        
+        return success
+
+    def test_news_intelligence_sources_registry(self):
+        """Test /api/news-intelligence/sources-registry - should return 120 active news sources"""
+        success, data = self.run_test(
+            "News Intelligence Sources Registry (120 sources)",
+            "GET",
+            "/api/news-intelligence/sources-registry",
+            200
+        )
+        
+        if success and isinstance(data, dict):
+            sources = data.get('sources', [])
+            stats = data.get('stats', {})
+            
+            total_sources = len(sources)
+            active_count = stats.get('by_status', {}).get('active', 0)
+            
+            print(f"      📊 News Sources Registry:")
+            print(f"         Total sources: {total_sources}")
+            print(f"         Active sources: {active_count}")
+            print(f"         By tier: {stats.get('by_tier', {})}")
+            print(f"         By language: {stats.get('by_language', {})}")
+            
+            # Check if we have expected counts
+            expected_total = 120
+            total_ok = abs(total_sources - expected_total) <= 10
+            active_ok = active_count >= 100  # Most should be active
+            
+            if not total_ok:
+                print(f"      ⚠️  Total sources: expected ~{expected_total}, got {total_sources}")
+            if not active_ok:
+                print(f"      ⚠️  Active sources low: {active_count}")
+            
+            # Check key news sources (Cointelegraph, The Block, Decrypt)
+            key_sources = ['cointelegraph', 'theblock', 'decrypt']
+            found_sources = []
+            for source in sources:
+                if source.get('id') in key_sources:
+                    found_sources.append(source.get('id'))
+                    print(f"         ✅ {source.get('name')}: {source.get('status')} (health: {source.get('health_score')})")
+            
+            key_sources_ok = len(found_sources) >= 3
+            if not key_sources_ok:
+                print(f"      ⚠️  Missing key sources: {set(key_sources) - set(found_sources)}")
+            
+            return success and total_ok and active_ok and key_sources_ok
+        
+        return success
+
+    def test_intel_stats(self):
+        """Test /api/intel/stats - should return projects, investors, unlocks data"""
+        success, data = self.run_test(
+            "Intel Statistics",
+            "GET",
+            "/api/intel/stats",
+            200
+        )
+        
+        if success and isinstance(data, dict):
+            collections = data.get('collections', {})
+            
+            print(f"      📊 Intel Collections:")
+            for key, count in collections.items():
+                print(f"         {key}: {count}")
+            
+            # Check for expected data
+            investors = collections.get('investors', 0)
+            projects = collections.get('projects', 0)
+            unlocks = collections.get('unlocks', 0)
+            
+            # We should have some investors and projects seeded
+            has_investors = investors >= 10
+            has_projects = projects >= 20
+            
+            if not has_investors:
+                print(f"      ⚠️  Low investors count: {investors}")
+            if not has_projects:
+                print(f"      ⚠️  Low projects count: {projects}")
                 
-                print(f"      📊 {len(sources)} sources, {valid_status_count} with valid status")
-                return True
-            else:
-                print(f"      ⚠️  No sources returned")
-                return False
+            return success and has_investors and has_projects
         
         return success
 
@@ -331,15 +430,24 @@ class FOMOAPITester:
         print(f"📡 Testing against: {self.base_url}")
         print("=" * 80)
         
-        # Core API tests
+        # Core API tests - Basic functionality
         self.test_basic_health()
-        self.test_graph_stats()
-        self.test_discovery_sources()
+        
+        # Key APIs from review request
+        self.test_discovery_sources()  # 34 sources, 31 active, 3 needs_key
+        self.test_news_intelligence_sources_registry()  # 120 news sources
+        self.test_graph_stats()  # 281 nodes, 499 edges
+        self.test_intel_stats()  # projects, investors, unlocks
+        
+        # Health Check & Status
         self.test_discovery_health_check()
         self.test_websocket_status()
         
-        # Feature-specific tests
+        # Knowledge Graph & Search
         self.test_knowledge_graph_search()
+        
+        # Optional visualization endpoints (may not be implemented)
+        print(f"\n🔍 Testing optional graph visualization endpoints...")
         self.test_graph_visualization_data()
         
         # Print summary

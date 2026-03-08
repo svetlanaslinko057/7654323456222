@@ -1,10 +1,10 @@
 {
   "summary": {
-    "total_tests": 11,
-    "passed_tests": 8,
-    "failed_tests": 3,
-    "success_rate": 72.72727272727273,
-    "test_timestamp": "2026-03-08T20:56:51.770496"
+    "total_tests": 13,
+    "passed_tests": 11,
+    "failed_tests": 2,
+    "success_rate": 84.61538461538461,
+    "test_timestamp": "2026-03-08T21:30:43.323544"
   },
   "test_results": [
     {
@@ -14,12 +14,12 @@
         "status_code": 200,
         "expected_status": 200,
         "response_size": 179,
-        "response_time_ms": 252,
+        "response_time_ms": 255,
         "response_data": {
           "ok": true,
           "service": "FOMO Market Data API",
           "version": "2.0.0",
-          "ts": 1773003381056,
+          "ts": 1773005429088,
           "layers": {
             "market_data": [
               "binance",
@@ -31,52 +31,18 @@
           }
         }
       },
-      "timestamp": "2026-03-08T20:56:21.084888"
+      "timestamp": "2026-03-08T21:30:29.107114"
     },
     {
-      "test_name": "Graph Statistics",
+      "test_name": "Discovery Sources (34 total, 31 active, 3 needs_key)",
       "success": true,
       "details": {
         "status_code": 200,
         "expected_status": 200,
-        "response_size": 321,
-        "response_time_ms": 65,
+        "response_size": 21631,
+        "response_time_ms": 56,
         "response_data": {
-          "total_nodes": 281,
-          "total_edges": 499,
-          "nodes_by_type": {
-            "person": 73,
-            "token": 44,
-            "exchange": 10,
-            "asset": 23,
-            "fund": 21,
-            "project": 110
-          },
-          "edges_by_type": {
-            "founded": 36,
-            "works_at": 40,
-            "advisor_of": 1,
-            "invested_in": 186,
-            "mapped_to_asset": 23,
-            "traded_on": 69,
-            "has_token": 63,
-            "coinvested_with": 81
-          },
-          "last_rebuild": "2026-03-08T20:54:25.086000"
-        }
-      },
-      "timestamp": "2026-03-08T20:56:21.151082"
-    },
-    {
-      "test_name": "Discovery Sources",
-      "success": true,
-      "details": {
-        "status_code": 200,
-        "expected_status": 200,
-        "response_size": 21184,
-        "response_time_ms": 62,
-        "response_data": {
-          "ts": 1773003381195,
+          "ts": 1773005429145,
           "total": 34,
           "sources": [
             {
@@ -107,7 +73,7 @@
               "rate_limit": "50 req/min",
               "status": "error",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://coingecko.com",
               "capabilities": [
                 "market",
@@ -122,10 +88,10 @@
                 "status": "error",
                 "http_status": 429,
                 "message": "Unexpected status: 429",
-                "response_time_ms": 64,
-                "checked_at": "2026-03-08T20:50:14.651231+00:00"
+                "response_time_ms": 85,
+                "checked_at": "2026-03-08T21:28:52.867564+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:14.651231+00:00",
+              "last_checked_at": "2026-03-08T21:28:52.867564+00:00",
               "synced": false
             },
             {
@@ -157,7 +123,7 @@
               "rate_limit": "30 req/min",
               "status": "degraded",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://cryptorank.io",
               "capabilities": [
                 "funds",
@@ -172,10 +138,10 @@
                 "status": "needs_key",
                 "http_status": 401,
                 "message": "API key required",
-                "response_time_ms": 264,
-                "checked_at": "2026-03-08T20:50:15.416525+00:00"
+                "response_time_ms": 246,
+                "checked_at": "2026-03-08T21:28:53.028658+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:15.416525+00:00",
+              "last_checked_at": "2026-03-08T21:28:53.028658+00:00",
               "synced": false
             },
             {
@@ -202,7 +168,7 @@
               "rate_limit": "10 req/min",
               "status": "active",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://dropstab.com",
               "capabilities": [
                 "activities"
@@ -215,10 +181,10 @@
                 "status": "active",
                 "http_status": 404,
                 "message": "OK (404)",
-                "response_time_ms": 447,
-                "checked_at": "2026-03-08T20:50:16.365732+00:00"
+                "response_time_ms": 444,
+                "checked_at": "2026-03-08T21:28:53.226542+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:16.365732+00:00",
+              "last_checked_at": "2026-03-08T21:28:53.226542+00:00",
               "synced": true,
               "last_sync_ago": "Never"
             },
@@ -245,7 +211,7 @@
               "rate_limit": "10 req/min",
               "status": "error",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://token.unlocks.app",
               "capabilities": [
                 "unlocks"
@@ -258,10 +224,10 @@
                 "status": "error",
                 "http_status": 404,
                 "message": "Unexpected status: 404",
-                "response_time_ms": 365,
-                "checked_at": "2026-03-08T20:50:17.319506+00:00"
+                "response_time_ms": 803,
+                "checked_at": "2026-03-08T21:28:53.677409+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:17.319506+00:00",
+              "last_checked_at": "2026-03-08T21:28:53.677409+00:00",
               "synced": false
             },
             {
@@ -283,14 +249,14 @@
               "error_count": 0,
               "has_api": true,
               "last_error": null,
-              "last_sync": "2026-03-08T19:36:15.463691+00:00",
+              "last_sync": "2026-03-08T21:14:38.671817+00:00",
               "name": "DefiLlama",
               "parser_module": "parser_defillama",
               "priority": 1,
               "rate_limit": "100 req/min",
               "status": "active",
-              "sync_count": 3,
-              "updated_at": "2026-03-08T19:36:15.463691+00:00",
+              "sync_count": 4,
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://defillama.com",
               "capabilities": [
                 "defi",
@@ -305,12 +271,12 @@
                 "status": "active",
                 "http_status": 200,
                 "message": "Working",
-                "response_time_ms": 473,
-                "checked_at": "2026-03-08T20:50:18.298235+00:00"
+                "response_time_ms": 476,
+                "checked_at": "2026-03-08T21:28:53.261137+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:18.298235+00:00",
+              "last_checked_at": "2026-03-08T21:28:53.261137+00:00",
               "synced": true,
-              "last_sync_ago": "1h ago"
+              "last_sync_ago": "15m ago"
             },
             {
               "id": "rootdata",
@@ -335,9 +301,9 @@
               "parser_module": "parser_rootdata",
               "priority": 3,
               "rate_limit": "20 req/min",
-              "status": "active",
+              "status": "timeout",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://rootdata.com",
               "capabilities": [
                 "funding",
@@ -348,15 +314,12 @@
               "type": "intel",
               "last_check": {
                 "source_id": "rootdata",
-                "status": "active",
-                "http_status": 200,
-                "message": "Working",
-                "response_time_ms": 968,
-                "checked_at": "2026-03-08T20:50:19.767878+00:00"
+                "status": "timeout",
+                "message": "Timeout after 10s",
+                "checked_at": "2026-03-08T21:29:03.536752+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:19.767878+00:00",
-              "synced": true,
-              "last_sync_ago": "Never"
+              "last_checked_at": "2026-03-08T21:29:03.536752+00:00",
+              "synced": false
             },
             {
               "id": "messari",
@@ -385,7 +348,7 @@
               "rate_limit": "20 req/min",
               "status": "degraded",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://messari.io",
               "capabilities": [
                 "projects",
@@ -400,10 +363,10 @@
                 "status": "needs_key",
                 "http_status": 401,
                 "message": "API key required",
-                "response_time_ms": 207,
-                "checked_at": "2026-03-08T20:50:20.476070+00:00"
+                "response_time_ms": 210,
+                "checked_at": "2026-03-08T21:28:52.993329+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:20.476070+00:00",
+              "last_checked_at": "2026-03-08T21:28:52.993329+00:00",
               "synced": false
             },
             {
@@ -434,7 +397,7 @@
               "rate_limit": "30 req/min",
               "status": "degraded",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://coinmarketcap.com",
               "capabilities": [
                 "market",
@@ -449,10 +412,10 @@
                 "status": "needs_key",
                 "http_status": 401,
                 "message": "API key required",
-                "response_time_ms": 123,
-                "checked_at": "2026-03-08T20:50:21.100491+00:00"
+                "response_time_ms": 246,
+                "checked_at": "2026-03-08T21:28:53.029083+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:21.100491+00:00",
+              "last_checked_at": "2026-03-08T21:28:53.029083+00:00",
               "synced": false
             },
             {
@@ -474,24 +437,30 @@
               "last_sync": null,
               "name": "ICO Drops",
               "parser_module": "parser_icodrops",
-              "priority": "medium",
+              "priority": 1,
               "rate_limit": "10 req/min",
               "status": "active",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://icodrops.com",
               "last_check": {
                 "source_id": "icodrops",
                 "status": "active",
                 "http_status": 200,
                 "message": "Working",
-                "response_time_ms": 1756,
-                "checked_at": "2026-03-08T20:50:23.358217+00:00"
+                "response_time_ms": 1087,
+                "checked_at": "2026-03-08T21:28:53.870731+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:23.358217+00:00",
+              "last_checked_at": "2026-03-08T21:28:53.870731+00:00",
+              "capabilities": [
+                "ico",
+                "launchpads"
+              ],
+              "domain": "icodrops.com",
+              "is_new": false,
+              "type": "activities",
               "synced": true,
-              "last_sync_ago": "Never",
-              "is_new": false
+              "last_sync_ago": "Never"
             },
             {
               "id": "dappradar",
@@ -513,21 +482,27 @@
               "last_sync": null,
               "name": "DappRadar",
               "parser_module": "parser_dappradar",
-              "priority": "medium",
+              "priority": 2,
               "rate_limit": "50 req/min",
               "status": "offline",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://dappradar.com",
               "last_check": {
                 "source_id": "dappradar",
                 "status": "offline",
                 "message": "Connection failed: [Errno -5] No address associated with hostname",
-                "checked_at": "2026-03-08T20:50:23.907410+00:00"
+                "checked_at": "2026-03-08T21:28:52.875388+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:23.907410+00:00",
-              "synced": false,
-              "is_new": false
+              "last_checked_at": "2026-03-08T21:28:52.875388+00:00",
+              "capabilities": [
+                "dapps",
+                "rankings"
+              ],
+              "domain": "dappradar.com",
+              "is_new": false,
+              "type": "activities",
+              "synced": false
             },
             {
               "id": "dropsearn",
@@ -548,24 +523,29 @@
               "last_sync": null,
               "name": "DropsEarn",
               "parser_module": "parser_activities",
-              "priority": "medium",
+              "priority": 3,
               "rate_limit": "10 req/min",
               "status": "active",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://dropsearn.com",
               "last_check": {
                 "source_id": "dropsearn",
                 "status": "active",
                 "http_status": 200,
                 "message": "Working",
-                "response_time_ms": 1029,
-                "checked_at": "2026-03-08T20:50:25.837573+00:00"
+                "response_time_ms": 642,
+                "checked_at": "2026-03-08T21:29:04.568608+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:25.837573+00:00",
+              "last_checked_at": "2026-03-08T21:29:04.568608+00:00",
+              "capabilities": [
+                "airdrops"
+              ],
+              "domain": "dropsearn.com",
+              "is_new": false,
+              "type": "activities",
               "synced": true,
-              "last_sync_ago": "Never",
-              "is_new": false
+              "last_sync_ago": "Never"
             },
             {
               "id": "airdropalert",
@@ -584,23 +564,29 @@
               "last_sync": null,
               "name": "AirdropAlert",
               "parser_module": "parser_airdropalert",
-              "priority": "medium",
+              "priority": 4,
               "rate_limit": "N/A",
               "status": "error",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://airdropalert.com",
               "last_check": {
                 "source_id": "airdropalert",
                 "status": "error",
                 "http_status": 429,
                 "message": "Unexpected status: 429",
-                "response_time_ms": 135,
-                "checked_at": "2026-03-08T20:50:26.474174+00:00"
+                "response_time_ms": 26,
+                "checked_at": "2026-03-08T21:29:03.696365+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:26.474174+00:00",
-              "synced": false,
-              "is_new": false
+              "last_checked_at": "2026-03-08T21:29:03.696365+00:00",
+              "capabilities": [
+                "airdrops",
+                "alerts"
+              ],
+              "domain": "airdropalert.com",
+              "is_new": false,
+              "type": "activities",
+              "synced": false
             },
             {
               "id": "cointelegraph",
@@ -620,24 +606,30 @@
               "last_sync": null,
               "name": "Cointelegraph",
               "parser_module": "parser_news",
-              "priority": "low",
+              "priority": 1,
               "rate_limit": "N/A",
               "status": "active",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://cointelegraph.com",
               "last_check": {
                 "source_id": "cointelegraph",
                 "status": "active",
                 "http_status": 200,
                 "message": "RSS feed working",
-                "response_time_ms": 106,
-                "checked_at": "2026-03-08T20:50:27.082937+00:00"
+                "response_time_ms": 121,
+                "checked_at": "2026-03-08T21:29:03.659706+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:27.082937+00:00",
+              "last_checked_at": "2026-03-08T21:29:03.659706+00:00",
+              "capabilities": [
+                "news",
+                "analysis"
+              ],
+              "domain": "cointelegraph.com",
+              "is_new": false,
+              "type": "news",
               "synced": true,
-              "last_sync_ago": "Never",
-              "is_new": false
+              "last_sync_ago": "Never"
             },
             {
               "id": "theblock",
@@ -659,24 +651,30 @@
               "last_sync": null,
               "name": "The Block",
               "parser_module": "parser_news",
-              "priority": "low",
+              "priority": 2,
               "rate_limit": "N/A",
               "status": "active",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://theblock.co",
               "last_check": {
                 "source_id": "theblock",
                 "status": "active",
                 "http_status": 200,
                 "message": "RSS feed working",
-                "response_time_ms": 107,
-                "checked_at": "2026-03-08T20:50:27.691759+00:00"
+                "response_time_ms": 87,
+                "checked_at": "2026-03-08T21:29:03.625342+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:27.691759+00:00",
+              "last_checked_at": "2026-03-08T21:29:03.625342+00:00",
+              "capabilities": [
+                "news",
+                "research"
+              ],
+              "domain": "theblock.co",
+              "is_new": false,
+              "type": "news",
               "synced": true,
-              "last_sync_ago": "Never",
-              "is_new": false
+              "last_sync_ago": "Never"
             },
             {
               "id": "coindesk",
@@ -696,24 +694,30 @@
               "last_sync": null,
               "name": "CoinDesk",
               "parser_module": "parser_news",
-              "priority": "low",
+              "priority": 3,
               "rate_limit": "N/A",
               "status": "active",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://coindesk.com",
               "last_check": {
                 "source_id": "coindesk",
                 "status": "active",
                 "http_status": 200,
                 "message": "RSS feed working",
-                "response_time_ms": 4880,
-                "checked_at": "2026-03-08T20:50:33.195160+00:00"
+                "response_time_ms": 80,
+                "checked_at": "2026-03-08T21:29:03.749321+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:33.195160+00:00",
+              "last_checked_at": "2026-03-08T21:29:03.749321+00:00",
+              "capabilities": [
+                "news",
+                "analysis"
+              ],
+              "domain": "coindesk.com",
+              "is_new": false,
+              "type": "news",
               "synced": true,
-              "last_sync_ago": "Never",
-              "is_new": false
+              "last_sync_ago": "Never"
             },
             {
               "id": "incrypted",
@@ -738,24 +742,29 @@
               "last_sync": null,
               "name": "Incrypted",
               "parser_module": "parser_incrypted",
-              "priority": "critical",
+              "priority": 4,
               "rate_limit": "N/A",
               "status": "active",
               "sync_count": 0,
-              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "website": "https://incrypted.com",
               "last_check": {
                 "source_id": "incrypted",
                 "status": "active",
                 "http_status": 200,
                 "message": "RSS feed working",
-                "response_time_ms": 2213,
-                "checked_at": "2026-03-08T20:50:36.283048+00:00"
+                "response_time_ms": 5163,
+                "checked_at": "2026-03-08T21:29:08.702314+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:36.283048+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.702314+00:00",
+              "capabilities": [
+                "news"
+              ],
+              "domain": "incrypted.com",
+              "is_new": false,
+              "type": "news",
               "synced": true,
-              "last_sync_ago": "Never",
-              "is_new": false
+              "last_sync_ago": "Never"
             },
             {
               "id": "tokenterminal",
@@ -769,16 +778,16 @@
               "priority": 2,
               "status": "active",
               "type": "defi",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "tokenterminal",
                 "status": "active",
                 "http_status": 403,
                 "message": "OK (403)",
-                "response_time_ms": 71,
-                "checked_at": "2026-03-08T20:50:36.856571+00:00"
+                "response_time_ms": 54,
+                "checked_at": "2026-03-08T21:29:03.592354+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:36.856571+00:00",
+              "last_checked_at": "2026-03-08T21:29:03.592354+00:00",
               "synced": true,
               "last_sync_ago": "Never"
             },
@@ -795,16 +804,16 @@
               "priority": 1,
               "status": "active",
               "type": "dex",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "dexscreener",
                 "status": "active",
                 "http_status": 200,
                 "message": "Working",
-                "response_time_ms": 58,
-                "checked_at": "2026-03-08T20:50:37.416745+00:00"
+                "response_time_ms": 102,
+                "checked_at": "2026-03-08T21:29:03.640453+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:37.416745+00:00",
+              "last_checked_at": "2026-03-08T21:29:03.640453+00:00",
               "synced": true,
               "last_sync_ago": "Never"
             },
@@ -821,16 +830,16 @@
               "priority": 2,
               "status": "active",
               "type": "dex",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "geckoterminal",
                 "status": "active",
                 "http_status": 200,
                 "message": "Working",
-                "response_time_ms": 110,
-                "checked_at": "2026-03-08T20:50:38.028426+00:00"
+                "response_time_ms": 154,
+                "checked_at": "2026-03-08T21:29:03.692723+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:38.028426+00:00",
+              "last_checked_at": "2026-03-08T21:29:03.692723+00:00",
               "synced": true,
               "last_sync_ago": "Never"
             },
@@ -847,16 +856,16 @@
               "priority": 3,
               "status": "error",
               "type": "dex",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "dextools",
                 "status": "error",
                 "http_status": 403,
                 "message": "Unexpected status: 403",
-                "response_time_ms": 296,
-                "checked_at": "2026-03-08T20:50:38.825762+00:00"
+                "response_time_ms": 231,
+                "checked_at": "2026-03-08T21:29:03.770362+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:38.825762+00:00",
+              "last_checked_at": "2026-03-08T21:29:03.770362+00:00",
               "synced": false
             },
             {
@@ -871,14 +880,14 @@
               "priority": 4,
               "status": "error",
               "type": "dex",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "defined",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:39.326457+00:00"
+                "checked_at": "2026-03-08T21:29:08.702432+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:39.326457+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.702432+00:00",
               "synced": false
             },
             {
@@ -893,14 +902,14 @@
               "priority": 4,
               "status": "error",
               "type": "intel",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "crunchbase",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:39.827534+00:00"
+                "checked_at": "2026-03-08T21:29:08.702437+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:39.827534+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.702437+00:00",
               "synced": false
             },
             {
@@ -915,14 +924,14 @@
               "priority": 2,
               "status": "error",
               "type": "unlocks",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "vestlab",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:40.328627+00:00"
+                "checked_at": "2026-03-08T21:29:08.702441+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:40.328627+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.702441+00:00",
               "synced": false
             },
             {
@@ -938,16 +947,16 @@
               "priority": 1,
               "status": "active",
               "type": "derivatives",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "coinglass",
                 "status": "active",
                 "http_status": 200,
                 "message": "Working",
-                "response_time_ms": 287,
-                "checked_at": "2026-03-08T20:50:41.127612+00:00"
+                "response_time_ms": 360,
+                "checked_at": "2026-03-08T21:29:09.063858+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:41.127612+00:00",
+              "last_checked_at": "2026-03-08T21:29:09.063858+00:00",
               "synced": true,
               "last_sync_ago": "Never"
             },
@@ -963,16 +972,16 @@
               "priority": 2,
               "status": "error",
               "type": "derivatives",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "laevitas",
                 "status": "error",
                 "http_status": 400,
                 "message": "Unexpected status: 400",
-                "response_time_ms": 606,
-                "checked_at": "2026-03-08T20:50:42.235308+00:00"
+                "response_time_ms": 602,
+                "checked_at": "2026-03-08T21:29:09.306048+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:42.235308+00:00",
+              "last_checked_at": "2026-03-08T21:29:09.306048+00:00",
               "synced": false
             },
             {
@@ -987,14 +996,14 @@
               "priority": 3,
               "status": "error",
               "type": "derivatives",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "velodata",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:42.736761+00:00"
+                "checked_at": "2026-03-08T21:29:08.703126+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:42.736761+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.703126+00:00",
               "synced": false
             },
             {
@@ -1010,14 +1019,14 @@
               "priority": 1,
               "status": "error",
               "type": "onchain",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "nansen",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:43.238181+00:00"
+                "checked_at": "2026-03-08T21:29:08.703133+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:43.238181+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.703133+00:00",
               "synced": false
             },
             {
@@ -1032,14 +1041,14 @@
               "priority": 2,
               "status": "error",
               "type": "onchain",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "arkham",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:43.867954+00:00"
+                "checked_at": "2026-03-08T21:29:08.703136+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:43.867954+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.703136+00:00",
               "synced": false
             },
             {
@@ -1054,14 +1063,14 @@
               "priority": 3,
               "status": "error",
               "type": "onchain",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "dune",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:44.368507+00:00"
+                "checked_at": "2026-03-08T21:29:08.703139+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:44.368507+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.703139+00:00",
               "synced": false
             },
             {
@@ -1076,14 +1085,14 @@
               "priority": 4,
               "status": "error",
               "type": "onchain",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "glassnode",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:44.869394+00:00"
+                "checked_at": "2026-03-08T21:29:08.703142+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:44.869394+00:00",
+              "last_checked_at": "2026-03-08T21:29:08.703142+00:00",
               "synced": false
             },
             {
@@ -1098,14 +1107,14 @@
               "priority": 5,
               "status": "error",
               "type": "onchain",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "santiment",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:45.370499+00:00"
+                "checked_at": "2026-03-08T21:29:09.306126+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:45.370499+00:00",
+              "last_checked_at": "2026-03-08T21:29:09.306126+00:00",
               "synced": false
             },
             {
@@ -1121,16 +1130,16 @@
               "priority": 1,
               "status": "error",
               "type": "l2",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "l2beat",
                 "status": "error",
                 "http_status": 401,
                 "message": "Unexpected status: 401",
-                "response_time_ms": 665,
-                "checked_at": "2026-03-08T20:50:46.538049+00:00"
+                "response_time_ms": 637,
+                "checked_at": "2026-03-08T21:29:09.944322+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:46.538049+00:00",
+              "last_checked_at": "2026-03-08T21:29:09.944322+00:00",
               "synced": false
             },
             {
@@ -1145,16 +1154,16 @@
               "priority": 2,
               "status": "error",
               "type": "l2",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "growthepie",
                 "status": "error",
                 "http_status": 403,
                 "message": "Unexpected status: 403",
-                "response_time_ms": 405,
-                "checked_at": "2026-03-08T20:50:47.445464+00:00"
+                "response_time_ms": 308,
+                "checked_at": "2026-03-08T21:29:09.615220+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:47.445464+00:00",
+              "last_checked_at": "2026-03-08T21:29:09.615220+00:00",
               "synced": false
             },
             {
@@ -1169,29 +1178,1961 @@
               "priority": 3,
               "status": "error",
               "type": "l2",
-              "updated_at": "2026-03-08T18:47:29.275000",
+              "updated_at": "2026-03-08T21:23:12.005000",
               "last_check": {
                 "source_id": "artemis",
                 "status": "unknown",
                 "message": "No health check configured",
-                "checked_at": "2026-03-08T20:50:47.945632+00:00"
+                "checked_at": "2026-03-08T21:29:09.306689+00:00"
               },
-              "last_checked_at": "2026-03-08T20:50:47.945632+00:00",
+              "last_checked_at": "2026-03-08T21:29:09.306689+00:00",
               "synced": false
             }
           ]
         }
       },
-      "timestamp": "2026-03-08T20:56:21.218540"
+      "timestamp": "2026-03-08T21:30:29.166088"
+    },
+    {
+      "test_name": "News Intelligence Sources Registry (120 sources)",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 28436,
+        "response_time_ms": 69,
+        "response_data": {
+          "ok": true,
+          "ts": 1773005429212,
+          "sources": [
+            {
+              "id": "bitcoinmagazine",
+              "name": "Bitcoin Magazine",
+              "domain": "bitcoinmagazine.com",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://bitcoinmagazine.com/.rss/full/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "bitcoinist",
+              "name": "Bitcoinist",
+              "domain": "bitcoinist.com",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://bitcoinist.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "bits_media",
+              "name": "Bits.media",
+              "domain": "bits.media",
+              "tier": "A",
+              "language": "ru",
+              "category": "news",
+              "rss_url": "https://bits.media/rss2/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "blockworks",
+              "name": "Blockworks",
+              "domain": "blockworks.co",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://blockworks.co/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "coindesk",
+              "name": "CoinDesk",
+              "domain": "coindesk.com",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "coinspot",
+              "name": "CoinSpot",
+              "domain": "coinspot.io",
+              "tier": "A",
+              "language": "ru",
+              "category": "news",
+              "rss_url": "https://coinspot.io/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "cointelegraph",
+              "name": "Cointelegraph",
+              "domain": "cointelegraph.com",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://cointelegraph.com/rss",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptach",
+              "name": "Cryptach",
+              "domain": "cryptach.org",
+              "tier": "A",
+              "language": "ua",
+              "category": "news",
+              "rss_url": "https://cryptach.org/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptonews_en",
+              "name": "CryptoNews EN",
+              "domain": "cryptonews.com",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://cryptonews.com/news/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptoslate",
+              "name": "CryptoSlate",
+              "domain": "cryptoslate.com",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://cryptoslate.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "decrypt",
+              "name": "Decrypt",
+              "domain": "decrypt.co",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://decrypt.co/feed",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "forklog",
+              "name": "Forklog",
+              "domain": "forklog.com",
+              "tier": "A",
+              "language": "ru",
+              "category": "news",
+              "rss_url": "https://forklog.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "incrypted",
+              "name": "Incrypted",
+              "domain": "incrypted.com",
+              "tier": "A",
+              "language": "ru",
+              "category": "news",
+              "rss_url": "https://incrypted.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "theblock",
+              "name": "The Block",
+              "domain": "theblock.co",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://www.theblock.co/rss.xml",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "dailyhodl",
+              "name": "The Daily Hodl",
+              "domain": "dailyhodl.com",
+              "tier": "A",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://dailyhodl.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "2bitcoins",
+              "name": "2Bitcoins",
+              "domain": "2bitcoins.ru",
+              "tier": "B",
+              "language": "ru",
+              "category": "news",
+              "rss_url": "https://2bitcoins.ru/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "ambcrypto",
+              "name": "AMBCrypto",
+              "domain": "ambcrypto.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://ambcrypto.com/feed/",
+              "status": "active",
+              "health_score": 0.98,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "btcecho",
+              "name": "BTC-ECHO",
+              "domain": "btc-echo.de",
+              "tier": "B",
+              "language": "de",
+              "category": "news",
+              "rss_url": "https://www.btc-echo.de/feed/",
+              "status": "active",
+              "health_score": 0.97,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "beincrypto",
+              "name": "BeInCrypto",
+              "domain": "beincrypto.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://beincrypto.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "blocktempo",
+              "name": "BlockTempo",
+              "domain": "blocktempo.com",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://www.blocktempo.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "blockonomi",
+              "name": "Blockonomi",
+              "domain": "blockonomi.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://blockonomi.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "chainnews",
+              "name": "ChainNews",
+              "domain": "chainnews.com",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://www.chainnews.com/rss",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coincodex",
+              "name": "CoinCodex News",
+              "domain": "coincodex.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://coincodex.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coingape",
+              "name": "CoinGape",
+              "domain": "coingape.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://coingape.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "coinjinja",
+              "name": "CoinJinja",
+              "domain": "coinjinja.com",
+              "tier": "B",
+              "language": "jp",
+              "category": "news",
+              "rss_url": "https://coinjinja.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coinjournal",
+              "name": "CoinJournal",
+              "domain": "coinjournal.net",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://coinjournal.net/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "coinpost",
+              "name": "CoinPost",
+              "domain": "coinpost.jp",
+              "tier": "B",
+              "language": "jp",
+              "category": "news",
+              "rss_url": "https://coinpost.jp/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coinpedia",
+              "name": "Coinpedia",
+              "domain": "coinpedia.org",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://coinpedia.org/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "coinspeaker",
+              "name": "Coinspeaker",
+              "domain": "coinspeaker.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://www.coinspeaker.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptobriefing",
+              "name": "Crypto Briefing",
+              "domain": "cryptobriefing.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://cryptobriefing.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptodaily",
+              "name": "Crypto Daily",
+              "domain": "cryptodaily.co.uk",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://cryptodaily.co.uk/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptoglobe",
+              "name": "CryptoGlobe",
+              "domain": "cryptoglobe.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://www.cryptoglobe.com/latest/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptonews_ru",
+              "name": "CryptoNews RU",
+              "domain": "cryptonews.net",
+              "tier": "B",
+              "language": "ru",
+              "category": "news",
+              "rss_url": "https://ru.cryptonews.com/news/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptonewsland",
+              "name": "CryptoNewsLand",
+              "domain": "cryptonewsland.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://cryptonewsland.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptonewsz",
+              "name": "CryptoNewsZ",
+              "domain": "cryptonewsz.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://www.cryptonewsz.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptopotato",
+              "name": "CryptoPotato",
+              "domain": "cryptopotato.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://cryptopotato.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "defiprime",
+              "name": "DeFi Prime",
+              "domain": "defiprime.com",
+              "tier": "B",
+              "language": "en",
+              "category": "defi",
+              "rss_url": "https://defiprime.com/feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "foresightnews",
+              "name": "Foresight News",
+              "domain": "foresightnews.pro",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://foresightnews.pro/rss",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "jinse",
+              "name": "Jinse Finance",
+              "domain": "jinse.com",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://www.jinse.com/rss",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "mining_cryptocurrency",
+              "name": "Mining Cryptocurrency",
+              "domain": "mining-cryptocurrency.ru",
+              "tier": "B",
+              "language": "ru",
+              "category": "news",
+              "rss_url": "https://mining-cryptocurrency.ru/feed/",
+              "status": "active",
+              "health_score": 0.99,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "newsbtc",
+              "name": "NewsBTC",
+              "domain": "newsbtc.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://www.newsbtc.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "nulltx",
+              "name": "NullTX",
+              "domain": "nulltx.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://nulltx.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "odaily",
+              "name": "Odaily",
+              "domain": "odaily.news",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://www.odaily.news/rss",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "panewslab",
+              "name": "PANews",
+              "domain": "panewslab.com",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://www.panewslab.com/rss",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "techflowpost",
+              "name": "TechFlow",
+              "domain": "techflowpost.com",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://www.techflowpost.com/rss",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "thecryptobasic",
+              "name": "The Crypto Basic",
+              "domain": "thecryptobasic.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://thecryptobasic.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "thedefiant",
+              "name": "The Defiant",
+              "domain": "thedefiant.io",
+              "tier": "B",
+              "language": "en",
+              "category": "defi",
+              "rss_url": "https://thedefiant.io/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "tokenclub",
+              "name": "TokenClub",
+              "domain": "tokenclub.com",
+              "tier": "B",
+              "language": "zh",
+              "category": "news",
+              "rss_url": "https://www.tokenclub.com/rss",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "utoday",
+              "name": "U.Today",
+              "domain": "u.today",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://u.today/rss",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "zycrypto",
+              "name": "ZyCrypto",
+              "domain": "zycrypto.com",
+              "tier": "B",
+              "language": "en",
+              "category": "news",
+              "rss_url": "https://zycrypto.com/feed/",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "aave_blog",
+              "name": "Aave Blog",
+              "domain": "aave.com",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://aave.mirror.xyz/feed/atom",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "arbitrum_blog",
+              "name": "Arbitrum Blog",
+              "domain": "arbitrum.io",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://medium.com/feed/offchainlabs",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "avalanche_blog",
+              "name": "Avalanche Blog",
+              "domain": "avax.network",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://medium.com/feed/avalancheavax",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "bankless",
+              "name": "Bankless",
+              "domain": "bankless.com",
+              "tier": "C",
+              "language": "en",
+              "category": "analysis",
+              "rss_url": "https://www.bankless.com/feed",
+              "status": "active",
+              "health_score": 1.0,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "binance_research",
+              "name": "Binance Research",
+              "domain": "binance.com",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://research.binance.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "bitcoin_dev",
+              "name": "Bitcoin Dev",
+              "domain": "bitcoin.org",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://bitcoin.org/en/rss/blog.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "celestia_blog",
+              "name": "Celestia Blog",
+              "domain": "celestia.org",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.celestia.org/rss/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "chainlink_blog",
+              "name": "Chainlink Blog",
+              "domain": "chain.link",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.chain.link/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coinbase_research",
+              "name": "Coinbase Research",
+              "domain": "coinbase.com",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://www.coinbase.com/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "compound_blog",
+              "name": "Compound Blog",
+              "domain": "compound.finance",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://medium.com/feed/compound-finance",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cosmos_blog",
+              "name": "Cosmos Blog",
+              "domain": "cosmos.network",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.cosmos.network/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "delphidigital",
+              "name": "Delphi Digital",
+              "domain": "delphidigital.io",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://members.delphidigital.io/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "dragonfly",
+              "name": "Dragonfly Research",
+              "domain": "dragonfly.xyz",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://medium.com/feed/dragonfly-research",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "eigenlayer_blog",
+              "name": "EigenLayer Blog",
+              "domain": "eigenlayer.xyz",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://www.blog.eigenlayer.xyz/rss/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "electric_capital",
+              "name": "Electric Capital",
+              "domain": "electriccapital.com",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://www.electriccapital.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "ethereum_blog",
+              "name": "Ethereum Foundation Blog",
+              "domain": "blog.ethereum.org",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.ethereum.org/feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "framework",
+              "name": "Framework Ventures",
+              "domain": "framework.ventures",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://framework.ventures/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "galaxy_research",
+              "name": "Galaxy Research",
+              "domain": "galaxy.com",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://www.galaxy.com/research/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "jump_crypto",
+              "name": "Jump Crypto",
+              "domain": "jumpcrypto.com",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://jumpcrypto.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "layerzero_blog",
+              "name": "LayerZero Blog",
+              "domain": "layerzero.network",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://medium.com/feed/layerzero-official",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "lido_blog",
+              "name": "Lido Blog",
+              "domain": "lido.fi",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.lido.fi/rss/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "makerdao_blog",
+              "name": "MakerDAO Blog",
+              "domain": "makerdao.com",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.makerdao.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "mechanism",
+              "name": "Mechanism Capital",
+              "domain": "mechanism.capital",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://www.mechanism.capital/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "messari_research",
+              "name": "Messari Research",
+              "domain": "messari.io",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://messari.io/rss/news",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "multicoin",
+              "name": "Multicoin Capital",
+              "domain": "multicoin.capital",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://multicoin.capital/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "near_blog",
+              "name": "NEAR Blog",
+              "domain": "near.org",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://near.org/blog/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "optimism_blog",
+              "name": "Optimism Blog",
+              "domain": "optimism.io",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://optimism.mirror.xyz/feed/atom",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "pantera",
+              "name": "Pantera Capital",
+              "domain": "panteracapital.com",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://panteracapital.com/blockchain-letter/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "paradigm",
+              "name": "Paradigm",
+              "domain": "paradigm.xyz",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://www.paradigm.xyz/feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "placeholder",
+              "name": "Placeholder VC",
+              "domain": "placeholder.vc",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://www.placeholder.vc/blog?format=rss",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "polkadot_blog",
+              "name": "Polkadot Blog",
+              "domain": "polkadot.network",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://polkadot.network/blog/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "polychain",
+              "name": "Polychain Capital",
+              "domain": "polychain.capital",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://polychain.capital/blog-feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "polygon_blog",
+              "name": "Polygon Blog",
+              "domain": "polygon.technology",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.polygon.technology/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "solana_blog",
+              "name": "Solana Blog",
+              "domain": "solana.com",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://solana.com/news/feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "sui_blog",
+              "name": "Sui Blog",
+              "domain": "sui.io",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.sui.io/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "uniswap_blog",
+              "name": "Uniswap Blog",
+              "domain": "uniswap.org",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://blog.uniswap.org/rss.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "variant",
+              "name": "Variant Fund",
+              "domain": "variant.fund",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://variant.fund/feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "weekinethereumnews",
+              "name": "Week in Ethereum News",
+              "domain": "weekinethereumnews.com",
+              "tier": "C",
+              "language": "en",
+              "category": "analysis",
+              "rss_url": "https://weekinethereumnews.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "wormhole_blog",
+              "name": "Wormhole Blog",
+              "domain": "wormhole.com",
+              "tier": "C",
+              "language": "en",
+              "category": "official",
+              "rss_url": "https://wormhole.com/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "a16z_crypto",
+              "name": "a16z Crypto",
+              "domain": "a16zcrypto.com",
+              "tier": "C",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://a16zcrypto.com/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "artemis",
+              "name": "Artemis",
+              "domain": "artemis.xyz",
+              "tier": "D",
+              "language": "en",
+              "category": "analytics",
+              "rss_url": "https://www.artemis.xyz/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "certik",
+              "name": "CertiK Alerts",
+              "domain": "certik.com",
+              "tier": "D",
+              "language": "en",
+              "category": "security",
+              "rss_url": "https://www.certik.com/resources/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "chainalysis",
+              "name": "Chainalysis Blog",
+              "domain": "chainalysis.com",
+              "tier": "D",
+              "language": "en",
+              "category": "analytics",
+              "rss_url": "https://blog.chainalysis.com/reports/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coingecko_news",
+              "name": "CoinGecko News",
+              "domain": "coingecko.com",
+              "tier": "D",
+              "language": "en",
+              "category": "aggregator",
+              "rss_url": "https://www.coingecko.com/en/news/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coinlist",
+              "name": "CoinList Blog",
+              "domain": "coinlist.co",
+              "tier": "D",
+              "language": "en",
+              "category": "funding",
+              "rss_url": "https://blog.coinlist.co/rss/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coinmarketcap_news",
+              "name": "CoinMarketCap News",
+              "domain": "coinmarketcap.com",
+              "tier": "D",
+              "language": "en",
+              "category": "aggregator",
+              "rss_url": "https://coinmarketcap.com/headlines/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "coinglass_blog",
+              "name": "Coinglass Blog",
+              "domain": "coinglass.com",
+              "tier": "D",
+              "language": "en",
+              "category": "derivatives",
+              "rss_url": "https://www.coinglass.com/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptopanic",
+              "name": "CryptoPanic",
+              "domain": "cryptopanic.com",
+              "tier": "D",
+              "language": "en",
+              "category": "aggregator",
+              "rss_url": "https://cryptopanic.com/news/rss/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "cryptorank_news",
+              "name": "CryptoRank News",
+              "domain": "cryptorank.io",
+              "tier": "D",
+              "language": "en",
+              "category": "funding",
+              "rss_url": "https://cryptorank.io/news/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "dexscreener_blog",
+              "name": "DEXScreener Blog",
+              "domain": "dexscreener.com",
+              "tier": "D",
+              "language": "en",
+              "category": "dex",
+              "rss_url": "https://dexscreener.com/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "dextools_blog",
+              "name": "DEXTools Blog",
+              "domain": "dextools.io",
+              "tier": "D",
+              "language": "en",
+              "category": "dex",
+              "rss_url": "https://www.dextools.io/blog/feed/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "debank_news",
+              "name": "DeBank News",
+              "domain": "debank.com",
+              "tier": "D",
+              "language": "en",
+              "category": "defi",
+              "rss_url": "https://debank.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "defillama_news",
+              "name": "DeFiLlama News",
+              "domain": "defillama.com",
+              "tier": "D",
+              "language": "en",
+              "category": "defi",
+              "rss_url": "https://defillama.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "definedfi",
+              "name": "Defined.fi",
+              "domain": "defined.fi",
+              "tier": "D",
+              "language": "en",
+              "category": "dex",
+              "rss_url": "https://www.defined.fi/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "dune_blog",
+              "name": "Dune Blog",
+              "domain": "dune.com",
+              "tier": "D",
+              "language": "en",
+              "category": "analytics",
+              "rss_url": "https://dune.com/blog/feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "geckoterminal_blog",
+              "name": "GeckoTerminal Blog",
+              "domain": "geckoterminal.com",
+              "tier": "D",
+              "language": "en",
+              "category": "dex",
+              "rss_url": "https://www.geckoterminal.com/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "glassnode_insights",
+              "name": "Glassnode Insights",
+              "domain": "glassnode.com",
+              "tier": "D",
+              "language": "en",
+              "category": "analytics",
+              "rss_url": "https://insights.glassnode.com/rss/",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "immunefi",
+              "name": "Immunefi",
+              "domain": "immunefi.com",
+              "tier": "D",
+              "language": "en",
+              "category": "security",
+              "rss_url": "https://medium.com/feed/immunefi",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "l2beat",
+              "name": "L2BEAT",
+              "domain": "l2beat.com",
+              "tier": "D",
+              "language": "en",
+              "category": "l2",
+              "rss_url": "https://l2beat.com/feed.xml",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "laevitas",
+              "name": "Laevitas",
+              "domain": "laevitas.ch",
+              "tier": "D",
+              "language": "en",
+              "category": "derivatives",
+              "rss_url": "https://www.laevitas.ch/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "nansen_research",
+              "name": "Nansen Research",
+              "domain": "nansen.ai",
+              "tier": "D",
+              "language": "en",
+              "category": "analytics",
+              "rss_url": "https://www.nansen.ai/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "rekt_news",
+              "name": "Rekt News",
+              "domain": "rekt.news",
+              "tier": "D",
+              "language": "en",
+              "category": "security",
+              "rss_url": "https://rekt.news/feed.xml",
+              "status": "active",
+              "health_score": 0.99,
+              "articles_today": 1,
+              "last_fetch": null
+            },
+            {
+              "id": "rootdata_news",
+              "name": "RootData News",
+              "domain": "rootdata.com",
+              "tier": "D",
+              "language": "en",
+              "category": "funding",
+              "rss_url": "https://www.rootdata.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "santiment_insights",
+              "name": "Santiment Insights",
+              "domain": "santiment.net",
+              "tier": "D",
+              "language": "en",
+              "category": "analytics",
+              "rss_url": "https://insights.santiment.net/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "slowmist",
+              "name": "SlowMist",
+              "domain": "slowmist.com",
+              "tier": "D",
+              "language": "en",
+              "category": "security",
+              "rss_url": "https://slowmist.medium.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "theblockcrypto",
+              "name": "The Block Data",
+              "domain": "theblockresearch.com",
+              "tier": "D",
+              "language": "en",
+              "category": "research",
+              "rss_url": "https://www.theblockresearch.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "tokenterminal_research",
+              "name": "Token Terminal",
+              "domain": "tokenterminal.com",
+              "tier": "D",
+              "language": "en",
+              "category": "analytics",
+              "rss_url": "https://tokenterminal.com/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "tokensniffer",
+              "name": "TokenSniffer",
+              "domain": "tokensniffer.com",
+              "tier": "D",
+              "language": "en",
+              "category": "security",
+              "rss_url": "https://tokensniffer.com/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "velo_data",
+              "name": "Velo Data",
+              "domain": "velodata.app",
+              "tier": "D",
+              "language": "en",
+              "category": "derivatives",
+              "rss_url": "https://velodata.app/blog/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            },
+            {
+              "id": "growthepie",
+              "name": "growthepie",
+              "domain": "growthepie.xyz",
+              "tier": "D",
+              "language": "en",
+              "category": "l2",
+              "rss_url": "https://www.growthepie.xyz/feed",
+              "status": "active",
+              "health_score": 0.8,
+              "articles_today": 0,
+              "last_fetch": null
+            }
+          ],
+          "stats": {
+            "total": 120,
+            "by_tier": {
+              "A": 15,
+              "B": 35,
+              "C": 40,
+              "D": 30
+            },
+            "by_language": {
+              "en": 101,
+              "ru": 7,
+              "ua": 1,
+              "de": 1,
+              "zh": 8,
+              "jp": 2
+            },
+            "by_category": {
+              "news": 48,
+              "defi": 4,
+              "official": 21,
+              "analysis": 2,
+              "research": 18,
+              "analytics": 7,
+              "security": 5,
+              "aggregator": 3,
+              "funding": 3,
+              "derivatives": 3,
+              "dex": 4,
+              "l2": 2
+            },
+            "by_status": {
+              "active": 120
+            }
+          }
+        }
+      },
+      "timestamp": "2026-03-08T21:30:29.236887"
+    },
+    {
+      "test_name": "Graph Statistics",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 321,
+        "response_time_ms": 52,
+        "response_data": {
+          "total_nodes": 281,
+          "total_edges": 499,
+          "nodes_by_type": {
+            "person": 73,
+            "token": 44,
+            "exchange": 10,
+            "asset": 23,
+            "fund": 21,
+            "project": 110
+          },
+          "edges_by_type": {
+            "works_at": 40,
+            "founded": 36,
+            "traded_on": 69,
+            "invested_in": 186,
+            "advisor_of": 1,
+            "mapped_to_asset": 23,
+            "coinvested_with": 81,
+            "has_token": 63
+          },
+          "last_rebuild": "2026-03-08T20:54:25.086000"
+        }
+      },
+      "timestamp": "2026-03-08T21:30:29.290517"
+    },
+    {
+      "test_name": "Intel Statistics",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 159,
+        "response_time_ms": 59,
+        "response_data": {
+          "ts": 1773005429325,
+          "collections": {
+            "investors": 15,
+            "unlocks": 0,
+            "fundraising": 0,
+            "projects": 40,
+            "activity": 0,
+            "launchpads": 0,
+            "categories": 0
+          },
+          "moderation_pending": 0
+        }
+      },
+      "timestamp": "2026-03-08T21:30:29.351107"
     },
     {
       "test_name": "Discovery Health Check",
-      "success": false,
+      "success": true,
       "details": {
-        "error": "timeout",
-        "timeout_seconds": 30
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 5295,
+        "response_time_ms": 13552,
+        "response_data": {
+          "ts": 1773005442880,
+          "status": "completed",
+          "summary": {
+            "total": 34,
+            "active": 13,
+            "degraded": 3,
+            "offline": 8,
+            "checked_at": "2026-03-08T21:30:42.877877+00:00"
+          },
+          "results": [
+            {
+              "source_id": "coingecko",
+              "status": "active",
+              "http_status": 200,
+              "message": "Working",
+              "response_time_ms": 132,
+              "checked_at": "2026-03-08T21:30:29.546731+00:00"
+            },
+            {
+              "source_id": "cryptorank",
+              "status": "needs_key",
+              "http_status": 401,
+              "message": "API key required",
+              "response_time_ms": 353,
+              "checked_at": "2026-03-08T21:30:29.768076+00:00"
+            },
+            {
+              "source_id": "dropstab",
+              "status": "active",
+              "http_status": 404,
+              "message": "OK (404)",
+              "response_time_ms": 335,
+              "checked_at": "2026-03-08T21:30:29.750899+00:00"
+            },
+            {
+              "source_id": "tokenunlocks",
+              "status": "error",
+              "http_status": 404,
+              "message": "Unexpected status: 404",
+              "response_time_ms": 901,
+              "checked_at": "2026-03-08T21:30:30.408027+00:00"
+            },
+            {
+              "source_id": "defillama",
+              "status": "active",
+              "http_status": 200,
+              "message": "Working",
+              "response_time_ms": 472,
+              "checked_at": "2026-03-08T21:30:29.888870+00:00"
+            },
+            {
+              "source_id": "rootdata",
+              "status": "timeout",
+              "message": "Timeout after 10s",
+              "checked_at": "2026-03-08T21:30:40.137125+00:00"
+            },
+            {
+              "source_id": "messari",
+              "status": "needs_key",
+              "http_status": 401,
+              "message": "API key required",
+              "response_time_ms": 205,
+              "checked_at": "2026-03-08T21:30:29.620651+00:00"
+            },
+            {
+              "source_id": "coinmarketcap",
+              "status": "needs_key",
+              "http_status": 401,
+              "message": "API key required",
+              "response_time_ms": 271,
+              "checked_at": "2026-03-08T21:30:29.687431+00:00"
+            },
+            {
+              "source_id": "icodrops",
+              "status": "active",
+              "http_status": 200,
+              "message": "Working",
+              "response_time_ms": 1440,
+              "checked_at": "2026-03-08T21:30:30.856535+00:00"
+            },
+            {
+              "source_id": "dappradar",
+              "status": "offline",
+              "message": "Connection failed: [Errno -5] No address associated with hostname",
+              "checked_at": "2026-03-08T21:30:29.535626+00:00"
+            },
+            {
+              "source_id": "dropsearn",
+              "status": "active",
+              "http_status": 200,
+              "message": "Working",
+              "response_time_ms": 835,
+              "checked_at": "2026-03-08T21:30:41.375239+00:00"
+            },
+            {
+              "source_id": "airdropalert",
+              "status": "error",
+              "http_status": 429,
+              "message": "Unexpected status: 429",
+              "response_time_ms": 151,
+              "checked_at": "2026-03-08T21:30:40.289191+00:00"
+            },
+            {
+              "source_id": "cointelegraph",
+              "status": "active",
+              "http_status": 200,
+              "message": "RSS feed working",
+              "response_time_ms": 138,
+              "checked_at": "2026-03-08T21:30:40.276148+00:00"
+            },
+            {
+              "source_id": "theblock",
+              "status": "active",
+              "http_status": 200,
+              "message": "RSS feed working",
+              "response_time_ms": 136,
+              "checked_at": "2026-03-08T21:30:40.274343+00:00"
+            },
+            {
+              "source_id": "coindesk",
+              "status": "active",
+              "http_status": 200,
+              "message": "RSS feed working",
+              "response_time_ms": 76,
+              "checked_at": "2026-03-08T21:30:40.328989+00:00"
+            },
+            {
+              "source_id": "incrypted",
+              "status": "active",
+              "http_status": 200,
+              "message": "RSS feed working",
+              "response_time_ms": 1422,
+              "checked_at": "2026-03-08T21:30:41.561441+00:00"
+            },
+            {
+              "source_id": "tokenterminal",
+              "status": "active",
+              "http_status": 403,
+              "message": "OK (403)",
+              "response_time_ms": 49,
+              "checked_at": "2026-03-08T21:30:40.188385+00:00"
+            },
+            {
+              "source_id": "dexscreener",
+              "status": "active",
+              "http_status": 200,
+              "message": "Working",
+              "response_time_ms": 90,
+              "checked_at": "2026-03-08T21:30:40.228709+00:00"
+            },
+            {
+              "source_id": "geckoterminal",
+              "status": "active",
+              "http_status": 200,
+              "message": "Working",
+              "response_time_ms": 149,
+              "checked_at": "2026-03-08T21:30:40.288413+00:00"
+            },
+            {
+              "source_id": "dextools",
+              "status": "error",
+              "http_status": 403,
+              "message": "Unexpected status: 403",
+              "response_time_ms": 374,
+              "checked_at": "2026-03-08T21:30:40.513096+00:00"
+            },
+            {
+              "source_id": "defined",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.561546+00:00"
+            },
+            {
+              "source_id": "crunchbase",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.561551+00:00"
+            },
+            {
+              "source_id": "vestlab",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.561554+00:00"
+            },
+            {
+              "source_id": "coinglass",
+              "status": "active",
+              "http_status": 200,
+              "message": "Working",
+              "response_time_ms": 363,
+              "checked_at": "2026-03-08T21:30:41.925628+00:00"
+            },
+            {
+              "source_id": "laevitas",
+              "status": "error",
+              "http_status": 400,
+              "message": "Unexpected status: 400",
+              "response_time_ms": 624,
+              "checked_at": "2026-03-08T21:30:42.186597+00:00"
+            },
+            {
+              "source_id": "velodata",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.562330+00:00"
+            },
+            {
+              "source_id": "nansen",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.562336+00:00"
+            },
+            {
+              "source_id": "arkham",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.562339+00:00"
+            },
+            {
+              "source_id": "dune",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.562342+00:00"
+            },
+            {
+              "source_id": "glassnode",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:41.562346+00:00"
+            },
+            {
+              "source_id": "santiment",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:42.186679+00:00"
+            },
+            {
+              "source_id": "l2beat",
+              "status": "error",
+              "http_status": 401,
+              "message": "Unexpected status: 401",
+              "response_time_ms": 662,
+              "checked_at": "2026-03-08T21:30:42.852418+00:00"
+            },
+            {
+              "source_id": "growthepie",
+              "status": "error",
+              "http_status": 403,
+              "message": "Unexpected status: 403",
+              "response_time_ms": 274,
+              "checked_at": "2026-03-08T21:30:42.462304+00:00"
+            },
+            {
+              "source_id": "artemis",
+              "status": "unknown",
+              "message": "No health check configured",
+              "checked_at": "2026-03-08T21:30:42.187448+00:00"
+            }
+          ]
+        }
       },
-      "timestamp": "2026-03-08T20:56:51.249638"
+      "timestamp": "2026-03-08T21:30:42.904631"
     },
     {
       "test_name": "WebSocket Status",
@@ -1200,7 +3141,7 @@
         "status_code": 200,
         "expected_status": 200,
         "response_size": 101,
-        "response_time_ms": 159,
+        "response_time_ms": 49,
         "response_data": {
           "ok": true,
           "total_connections": 0,
@@ -1213,7 +3154,7 @@
           }
         }
       },
-      "timestamp": "2026-03-08T20:56:51.409758"
+      "timestamp": "2026-03-08T21:30:42.955128"
     },
     {
       "test_name": "Knowledge Graph Search - a16z",
@@ -1222,7 +3163,7 @@
         "status_code": 200,
         "expected_status": 200,
         "response_size": 126,
-        "response_time_ms": 54,
+        "response_time_ms": 71,
         "response_data": {
           "results": [
             {
@@ -1237,7 +3178,7 @@
           "query": "a16z"
         }
       },
-      "timestamp": "2026-03-08T20:56:51.464881"
+      "timestamp": "2026-03-08T21:30:43.026981"
     },
     {
       "test_name": "Knowledge Graph Search - paradigm",
@@ -1246,7 +3187,7 @@
         "status_code": 200,
         "expected_status": 200,
         "response_size": 139,
-        "response_time_ms": 75,
+        "response_time_ms": 57,
         "response_data": {
           "results": [
             {
@@ -1261,7 +3202,7 @@
           "query": "paradigm"
         }
       },
-      "timestamp": "2026-03-08T20:56:51.540682"
+      "timestamp": "2026-03-08T21:30:43.085338"
     },
     {
       "test_name": "Knowledge Graph Search - jump crypto",
@@ -1270,7 +3211,7 @@
         "status_code": 200,
         "expected_status": 200,
         "response_size": 154,
-        "response_time_ms": 62,
+        "response_time_ms": 59,
         "response_data": {
           "results": [
             {
@@ -1285,7 +3226,7 @@
           "query": "jump crypto"
         }
       },
-      "timestamp": "2026-03-08T20:56:51.603881"
+      "timestamp": "2026-03-08T21:30:43.145222"
     },
     {
       "test_name": "Knowledge Graph Search - sequoia",
@@ -1294,7 +3235,7 @@
         "status_code": 200,
         "expected_status": 200,
         "response_size": 142,
-        "response_time_ms": 57,
+        "response_time_ms": 52,
         "response_data": {
           "results": [
             {
@@ -1309,7 +3250,7 @@
           "query": "sequoia"
         }
       },
-      "timestamp": "2026-03-08T20:56:51.661723"
+      "timestamp": "2026-03-08T21:30:43.198563"
     },
     {
       "test_name": "Graph Nodes",
@@ -1318,12 +3259,12 @@
         "status_code": 404,
         "expected_status": 200,
         "response_size": 22,
-        "response_time_ms": 53,
+        "response_time_ms": 65,
         "response_data": {
           "detail": "Not Found"
         }
       },
-      "timestamp": "2026-03-08T20:56:51.716196"
+      "timestamp": "2026-03-08T21:30:43.264275"
     },
     {
       "test_name": "Graph Edges",
@@ -1332,12 +3273,12 @@
         "status_code": 404,
         "expected_status": 200,
         "response_size": 22,
-        "response_time_ms": 53,
+        "response_time_ms": 58,
         "response_data": {
           "detail": "Not Found"
         }
       },
-      "timestamp": "2026-03-08T20:56:51.770343"
+      "timestamp": "2026-03-08T21:30:43.323366"
     }
   ]
 }

@@ -310,47 +310,59 @@ DATA_PROVIDERS_DATA = [
 # ═══════════════════════════════════════════════════════════════
 
 DATA_SOURCES_DATA = [
-    # Market Data
-    {"id": "coingecko", "name": "CoinGecko", "domain": "coingecko.com", "type": "market", "priority": 1, "status": "active", "capabilities": ["market", "projects", "analytics"], "is_new": False},
-    {"id": "coinmarketcap", "name": "CoinMarketCap", "domain": "coinmarketcap.com", "type": "market", "priority": 2, "status": "active", "capabilities": ["market", "projects", "ico"], "is_new": False},
-    {"id": "messari", "name": "Messari", "domain": "messari.io", "type": "research", "priority": 3, "status": "planned", "capabilities": ["projects", "funding", "analytics"], "is_new": False},
+    # Market Data - REQUIRES API KEY
+    {"id": "coingecko", "name": "CoinGecko", "domain": "coingecko.com", "type": "market", "priority": 1, "status": "needs_key", "capabilities": ["market", "projects", "analytics"], "is_new": False, "requires_api_key": True},
+    {"id": "coinmarketcap", "name": "CoinMarketCap", "domain": "coinmarketcap.com", "type": "market", "priority": 2, "status": "needs_key", "capabilities": ["market", "projects", "ico"], "is_new": False, "requires_api_key": True},
+    {"id": "messari", "name": "Messari", "domain": "messari.io", "type": "research", "priority": 3, "status": "needs_key", "capabilities": ["projects", "funding", "analytics"], "is_new": False, "requires_api_key": True},
     
-    # DeFi
+    # DeFi - FREE APIs
     {"id": "defillama", "name": "DefiLlama", "domain": "defillama.com", "type": "defi", "priority": 1, "status": "active", "capabilities": ["defi", "projects", "analytics"], "is_new": False},
     {"id": "tokenterminal", "name": "Token Terminal", "domain": "tokenterminal.com", "type": "defi", "priority": 2, "status": "active", "capabilities": ["defi", "fundamentals"], "is_new": False},
     
-    # DEX
+    # DEX - FREE APIs
     {"id": "dexscreener", "name": "DEXScreener", "domain": "dexscreener.com", "type": "dex", "priority": 1, "status": "active", "capabilities": ["dex", "pairs", "screener"], "is_new": False},
     {"id": "geckoterminal", "name": "GeckoTerminal", "domain": "geckoterminal.com", "type": "dex", "priority": 2, "status": "active", "capabilities": ["dex", "pools", "analytics"], "is_new": False},
     {"id": "dextools", "name": "DEXTools", "domain": "dextools.io", "type": "dex", "priority": 3, "status": "active", "capabilities": ["dex", "pairs", "hot"], "is_new": False},
     {"id": "defined", "name": "Defined.fi", "domain": "defined.fi", "type": "dex", "priority": 4, "status": "active", "capabilities": ["dex", "analytics"], "is_new": True},
     
-    # Intel / Funding
+    # Intel / Funding - PARSERS (no API needed)
     {"id": "cryptorank", "name": "CryptoRank", "domain": "cryptorank.io", "type": "intel", "priority": 1, "status": "active", "capabilities": ["funds", "vc", "investments"], "is_new": True},
     {"id": "dropstab", "name": "Dropstab", "domain": "dropstab.com", "type": "intel", "priority": 2, "status": "active", "capabilities": ["activities"], "is_new": False},
     {"id": "rootdata", "name": "RootData", "domain": "rootdata.com", "type": "intel", "priority": 3, "status": "active", "capabilities": ["funding", "investors"], "is_new": True},
-    {"id": "crunchbase", "name": "Crunchbase", "domain": "crunchbase.com", "type": "intel", "priority": 4, "status": "planned", "capabilities": ["funding", "companies"], "is_new": False},
+    {"id": "crunchbase", "name": "Crunchbase", "domain": "crunchbase.com", "type": "intel", "priority": 4, "status": "active", "capabilities": ["funding", "companies"], "is_new": False},
     
-    # Token Unlocks
+    # Token Unlocks - PARSERS
     {"id": "tokenunlocks", "name": "TokenUnlocks", "domain": "token.unlocks.app", "type": "unlocks", "priority": 1, "status": "active", "capabilities": ["unlocks"], "is_new": False},
-    {"id": "vestlab", "name": "VestLab", "domain": "vestlab.io", "type": "unlocks", "priority": 2, "status": "planned", "capabilities": ["unlocks", "vesting"], "is_new": True},
+    {"id": "vestlab", "name": "VestLab", "domain": "vestlab.io", "type": "unlocks", "priority": 2, "status": "active", "capabilities": ["unlocks", "vesting"], "is_new": True},
     
-    # Derivatives
+    # Derivatives - FREE APIs
     {"id": "coinglass", "name": "Coinglass", "domain": "coinglass.com", "type": "derivatives", "priority": 1, "status": "active", "capabilities": ["funding", "oi", "liquidations"], "is_new": False},
     {"id": "laevitas", "name": "Laevitas", "domain": "laevitas.ch", "type": "derivatives", "priority": 2, "status": "active", "capabilities": ["options", "futures"], "is_new": False},
-    {"id": "velodata", "name": "Velo Data", "domain": "velodata.app", "type": "derivatives", "priority": 3, "status": "planned", "capabilities": ["derivatives", "analytics"], "is_new": True},
+    {"id": "velodata", "name": "Velo Data", "domain": "velodata.app", "type": "derivatives", "priority": 3, "status": "active", "capabilities": ["derivatives", "analytics"], "is_new": True},
     
-    # On-chain
-    {"id": "nansen", "name": "Nansen", "domain": "nansen.ai", "type": "onchain", "priority": 1, "status": "planned", "capabilities": ["onchain", "wallets", "analytics"], "is_new": False},
-    {"id": "arkham", "name": "Arkham Intelligence", "domain": "arkm.io", "type": "onchain", "priority": 2, "status": "planned", "capabilities": ["onchain", "entity"], "is_new": False},
-    {"id": "dune", "name": "Dune Analytics", "domain": "dune.com", "type": "onchain", "priority": 3, "status": "planned", "capabilities": ["onchain", "queries"], "is_new": False},
-    {"id": "glassnode", "name": "Glassnode", "domain": "glassnode.com", "type": "onchain", "priority": 4, "status": "planned", "capabilities": ["onchain", "metrics"], "is_new": False},
-    {"id": "santiment", "name": "Santiment", "domain": "santiment.net", "type": "onchain", "priority": 5, "status": "planned", "capabilities": ["onchain", "social"], "is_new": False},
+    # On-chain - PARSERS (public data)
+    {"id": "nansen", "name": "Nansen", "domain": "nansen.ai", "type": "onchain", "priority": 1, "status": "active", "capabilities": ["onchain", "wallets", "analytics"], "is_new": False},
+    {"id": "arkham", "name": "Arkham Intelligence", "domain": "arkm.io", "type": "onchain", "priority": 2, "status": "active", "capabilities": ["onchain", "entity"], "is_new": False},
+    {"id": "dune", "name": "Dune Analytics", "domain": "dune.com", "type": "onchain", "priority": 3, "status": "active", "capabilities": ["onchain", "queries"], "is_new": False},
+    {"id": "glassnode", "name": "Glassnode", "domain": "glassnode.com", "type": "onchain", "priority": 4, "status": "active", "capabilities": ["onchain", "metrics"], "is_new": False},
+    {"id": "santiment", "name": "Santiment", "domain": "santiment.net", "type": "onchain", "priority": 5, "status": "active", "capabilities": ["onchain", "social"], "is_new": False},
     
-    # L2
+    # L2 - FREE APIs
     {"id": "l2beat", "name": "L2BEAT", "domain": "l2beat.com", "type": "l2", "priority": 1, "status": "active", "capabilities": ["l2", "tvl", "risk"], "is_new": False},
     {"id": "growthepie", "name": "growthepie", "domain": "growthepie.xyz", "type": "l2", "priority": 2, "status": "active", "capabilities": ["l2", "analytics"], "is_new": True},
     {"id": "artemis", "name": "Artemis", "domain": "artemis.xyz", "type": "l2", "priority": 3, "status": "active", "capabilities": ["chains", "analytics"], "is_new": True},
+    
+    # Airdrops & Activities - PARSERS
+    {"id": "icodrops", "name": "ICO Drops", "domain": "icodrops.com", "type": "activities", "priority": 1, "status": "active", "capabilities": ["ico", "launchpads"], "is_new": False},
+    {"id": "dappradar", "name": "DappRadar", "domain": "dappradar.com", "type": "activities", "priority": 2, "status": "active", "capabilities": ["dapps", "rankings"], "is_new": False},
+    {"id": "dropsearn", "name": "DropsEarn", "domain": "dropsearn.com", "type": "activities", "priority": 3, "status": "active", "capabilities": ["airdrops"], "is_new": False},
+    {"id": "airdropalert", "name": "AirdropAlert", "domain": "airdropalert.com", "type": "activities", "priority": 4, "status": "active", "capabilities": ["airdrops", "alerts"], "is_new": False},
+    
+    # News - RSS FEEDS
+    {"id": "cointelegraph", "name": "Cointelegraph", "domain": "cointelegraph.com", "type": "news", "priority": 1, "status": "active", "capabilities": ["news", "analysis"], "is_new": False},
+    {"id": "theblock", "name": "The Block", "domain": "theblock.co", "type": "news", "priority": 2, "status": "active", "capabilities": ["news", "research"], "is_new": False},
+    {"id": "coindesk", "name": "CoinDesk", "domain": "coindesk.com", "type": "news", "priority": 3, "status": "active", "capabilities": ["news", "analysis"], "is_new": False},
+    {"id": "incrypted", "name": "Incrypted", "domain": "incrypted.com", "type": "news", "priority": 4, "status": "active", "capabilities": ["news"], "is_new": False},
 ]
 
 

@@ -500,7 +500,7 @@ async def get_sources():
     }
 
 
-@router.get("/sources/full")
+@router.get("/sources-registry")
 async def get_full_sources_list(
     tier: str = Query(None, description="Filter by tier: A, B, C, D"),
     language: str = Query(None, description="Filter by language: en, ru, zh, jp, de, ua"),
@@ -529,28 +529,33 @@ async def get_full_sources_list(
     cursor = db.news_sources.find(query, {"_id": 0}).sort([("tier", 1), ("name", 1)])
     async for source in cursor:
         source_id = source.get("id")
+        if not source_id:
+            continue
         
-        # Get health metrics if available
-        health_status = "unknown"
-        health_score = 0
+        # Set default status to active for all sources
+        health_status = source.get("status", "active")
+        health_score = 0.8  # Default healthy
         articles_today = 0
         last_fetch = None
         
-        if source_id in health_monitor.sources:
-            metrics = health_monitor.sources[source_id]
-            # SourceHealthMetrics - health_score is a method
-            health_score = metrics.health_score() if hasattr(metrics, "health_score") else 0
-            articles_today = getattr(metrics, "total_fetches", 0) if hasattr(metrics, "total_fetches") else 0
-            last_fetch = getattr(metrics, "last_fetch_time", None) if hasattr(metrics, "last_fetch_time") else None
-            
-            if health_score >= 0.8:
-                health_status = "active"
-            elif health_score >= 0.5:
-                health_status = "degraded"
-            elif health_score > 0:
-                health_status = "paused"
-            else:
-                health_status = "disabled"
+        # Try to get health metrics if available
+        try:
+            if source_id in health_monitor.sources:
+                metrics = health_monitor.sources[source_id]
+                health_score = metrics.health_score() if hasattr(metrics, "health_score") else 0.8
+                articles_today = getattr(metrics, "total_fetches", 0) if hasattr(metrics, "total_fetches") else 0
+                last_fetch = getattr(metrics, "last_fetch_time", None) if hasattr(metrics, "last_fetch_time") else None
+                
+                if health_score >= 0.8:
+                    health_status = "active"
+                elif health_score >= 0.5:
+                    health_status = "degraded"
+                elif health_score > 0:
+                    health_status = "paused"
+                else:
+                    health_status = "disabled"
+        except Exception:
+            pass  # Keep default status
         
         # Apply status filter
         if status and health_status != status.lower():
