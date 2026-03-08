@@ -310,59 +310,68 @@ DATA_PROVIDERS_DATA = [
 # ═══════════════════════════════════════════════════════════════
 
 DATA_SOURCES_DATA = [
-    # Market Data - REQUIRES API KEY
-    {"id": "coingecko", "name": "CoinGecko", "domain": "coingecko.com", "type": "market", "priority": 1, "status": "needs_key", "capabilities": ["market", "projects", "analytics"], "is_new": False, "requires_api_key": True},
-    {"id": "coinmarketcap", "name": "CoinMarketCap", "domain": "coinmarketcap.com", "type": "market", "priority": 2, "status": "needs_key", "capabilities": ["market", "projects", "ico"], "is_new": False, "requires_api_key": True},
-    {"id": "messari", "name": "Messari", "domain": "messari.io", "type": "research", "priority": 3, "status": "needs_key", "capabilities": ["projects", "funding", "analytics"], "is_new": False, "requires_api_key": True},
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TIER 1 - КРИТИЧЕСКИ ВАЖНЫЕ (Всегда работают через парсер/бесплатный API)
+    # ═══════════════════════════════════════════════════════════════════════════
     
-    # DeFi - FREE APIs
-    {"id": "defillama", "name": "DefiLlama", "domain": "defillama.com", "type": "defi", "priority": 1, "status": "active", "capabilities": ["defi", "projects", "analytics"], "is_new": False},
-    {"id": "tokenterminal", "name": "Token Terminal", "domain": "tokenterminal.com", "type": "defi", "priority": 2, "status": "active", "capabilities": ["defi", "fundamentals"], "is_new": False},
+    # Market/DeFi - FREE PUBLIC APIs
+    {"id": "defillama", "name": "DefiLlama", "domain": "defillama.com", "type": "defi", "tier": 1, "priority": 1, "status": "active", "access": "api_public", "capabilities": ["tvl", "protocols", "chains", "yields"], "is_new": False},
+    {"id": "dexscreener", "name": "DEXScreener", "domain": "dexscreener.com", "type": "dex", "tier": 1, "priority": 1, "status": "active", "access": "api_public", "capabilities": ["pairs", "prices", "volume", "screener"], "is_new": False},
+    {"id": "geckoterminal", "name": "GeckoTerminal", "domain": "geckoterminal.com", "type": "dex", "tier": 1, "priority": 1, "status": "active", "access": "api_public", "capabilities": ["pools", "trending", "ohlcv"], "is_new": False},
+    {"id": "l2beat", "name": "L2BEAT", "domain": "l2beat.com", "type": "l2", "tier": 1, "priority": 1, "status": "active", "access": "api_public", "capabilities": ["l2_tvl", "risks", "stages"], "is_new": False},
+    {"id": "growthepie", "name": "growthepie", "domain": "growthepie.xyz", "type": "l2", "tier": 1, "priority": 1, "status": "active", "access": "api_public", "capabilities": ["l2_metrics", "economics"], "is_new": True},
     
-    # DEX - FREE APIs
-    {"id": "dexscreener", "name": "DEXScreener", "domain": "dexscreener.com", "type": "dex", "priority": 1, "status": "active", "capabilities": ["dex", "pairs", "screener"], "is_new": False},
-    {"id": "geckoterminal", "name": "GeckoTerminal", "domain": "geckoterminal.com", "type": "dex", "priority": 2, "status": "active", "capabilities": ["dex", "pools", "analytics"], "is_new": False},
-    {"id": "dextools", "name": "DEXTools", "domain": "dextools.io", "type": "dex", "priority": 3, "status": "active", "capabilities": ["dex", "pairs", "hot"], "is_new": False},
-    {"id": "defined", "name": "Defined.fi", "domain": "defined.fi", "type": "dex", "priority": 4, "status": "active", "capabilities": ["dex", "analytics"], "is_new": True},
+    # Intel/Funding - PARSERS (работают без API)
+    {"id": "cryptorank", "name": "CryptoRank", "domain": "cryptorank.io", "type": "intel", "tier": 1, "priority": 1, "status": "active", "access": "parser", "capabilities": ["funding", "vc", "investments", "ico"], "is_new": True},
+    {"id": "rootdata", "name": "RootData", "domain": "rootdata.com", "type": "intel", "tier": 1, "priority": 1, "status": "active", "access": "parser", "capabilities": ["funding", "teams", "investors"], "is_new": True},
+    {"id": "icodrops", "name": "ICO Drops", "domain": "icodrops.com", "type": "activities", "tier": 1, "priority": 1, "status": "active", "access": "parser", "capabilities": ["ico", "ido", "launchpads"], "is_new": False},
+    {"id": "dropsearn", "name": "DropsEarn", "domain": "dropsearn.com", "type": "activities", "tier": 1, "priority": 1, "status": "active", "access": "parser", "capabilities": ["airdrops", "testnets"], "is_new": False},
+    {"id": "crunchbase", "name": "Crunchbase", "domain": "crunchbase.com", "type": "intel", "tier": 1, "priority": 2, "status": "active", "access": "parser", "capabilities": ["funding", "companies", "people"], "is_new": False},
     
-    # Intel / Funding - PARSERS (no API needed)
-    {"id": "cryptorank", "name": "CryptoRank", "domain": "cryptorank.io", "type": "intel", "priority": 1, "status": "active", "capabilities": ["funds", "vc", "investments"], "is_new": True},
-    {"id": "dropstab", "name": "Dropstab", "domain": "dropstab.com", "type": "intel", "priority": 2, "status": "active", "capabilities": ["activities"], "is_new": False},
-    {"id": "rootdata", "name": "RootData", "domain": "rootdata.com", "type": "intel", "priority": 3, "status": "active", "capabilities": ["funding", "investors"], "is_new": True},
-    {"id": "crunchbase", "name": "Crunchbase", "domain": "crunchbase.com", "type": "intel", "priority": 4, "status": "active", "capabilities": ["funding", "companies"], "is_new": False},
+    # News - RSS (всегда работают)
+    {"id": "cointelegraph", "name": "Cointelegraph", "domain": "cointelegraph.com", "type": "news", "tier": 1, "priority": 1, "status": "active", "access": "rss", "capabilities": ["news", "analysis"], "is_new": False},
+    {"id": "theblock", "name": "The Block", "domain": "theblock.co", "type": "news", "tier": 1, "priority": 1, "status": "active", "access": "rss", "capabilities": ["news", "research"], "is_new": False},
+    {"id": "coindesk", "name": "CoinDesk", "domain": "coindesk.com", "type": "news", "tier": 1, "priority": 1, "status": "active", "access": "rss", "capabilities": ["news", "analysis"], "is_new": False},
+    {"id": "incrypted", "name": "Incrypted", "domain": "incrypted.com", "type": "news", "tier": 1, "priority": 1, "status": "active", "access": "rss", "capabilities": ["news"], "is_new": False},
     
-    # Token Unlocks - PARSERS
-    {"id": "tokenunlocks", "name": "TokenUnlocks", "domain": "token.unlocks.app", "type": "unlocks", "priority": 1, "status": "active", "capabilities": ["unlocks"], "is_new": False},
-    {"id": "vestlab", "name": "VestLab", "domain": "vestlab.io", "type": "unlocks", "priority": 2, "status": "active", "capabilities": ["unlocks", "vesting"], "is_new": True},
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TIER 2 - ВАЖНЫЕ (Парсер + публичный API с лимитами)
+    # ═══════════════════════════════════════════════════════════════════════════
     
-    # Derivatives - FREE APIs
-    {"id": "coinglass", "name": "Coinglass", "domain": "coinglass.com", "type": "derivatives", "priority": 1, "status": "active", "capabilities": ["funding", "oi", "liquidations"], "is_new": False},
-    {"id": "laevitas", "name": "Laevitas", "domain": "laevitas.ch", "type": "derivatives", "priority": 2, "status": "active", "capabilities": ["options", "futures"], "is_new": False},
-    {"id": "velodata", "name": "Velo Data", "domain": "velodata.app", "type": "derivatives", "priority": 3, "status": "active", "capabilities": ["derivatives", "analytics"], "is_new": True},
+    # DEX Analytics
+    {"id": "dextools", "name": "DEXTools", "domain": "dextools.io", "type": "dex", "tier": 2, "priority": 1, "status": "active", "access": "api_trial", "capabilities": ["pairs", "hot", "trending"], "is_new": False},
+    {"id": "defined", "name": "Defined.fi", "domain": "defined.fi", "type": "dex", "tier": 2, "priority": 2, "status": "active", "access": "graphql", "capabilities": ["analytics", "pairs"], "is_new": True},
     
-    # On-chain - PARSERS (public data)
-    {"id": "nansen", "name": "Nansen", "domain": "nansen.ai", "type": "onchain", "priority": 1, "status": "active", "capabilities": ["onchain", "wallets", "analytics"], "is_new": False},
-    {"id": "arkham", "name": "Arkham Intelligence", "domain": "arkm.io", "type": "onchain", "priority": 2, "status": "active", "capabilities": ["onchain", "entity"], "is_new": False},
-    {"id": "dune", "name": "Dune Analytics", "domain": "dune.com", "type": "onchain", "priority": 3, "status": "active", "capabilities": ["onchain", "queries"], "is_new": False},
-    {"id": "glassnode", "name": "Glassnode", "domain": "glassnode.com", "type": "onchain", "priority": 4, "status": "active", "capabilities": ["onchain", "metrics"], "is_new": False},
-    {"id": "santiment", "name": "Santiment", "domain": "santiment.net", "type": "onchain", "priority": 5, "status": "active", "capabilities": ["onchain", "social"], "is_new": False},
+    # Token Unlocks
+    {"id": "tokenunlocks", "name": "TokenUnlocks", "domain": "token.unlocks.app", "type": "unlocks", "tier": 2, "priority": 1, "status": "active", "access": "parser", "capabilities": ["unlocks", "schedules"], "is_new": False},
+    {"id": "vestlab", "name": "VestLab", "domain": "vestlab.io", "type": "unlocks", "tier": 2, "priority": 2, "status": "active", "access": "parser", "capabilities": ["vesting", "tokenomics"], "is_new": True},
     
-    # L2 - FREE APIs
-    {"id": "l2beat", "name": "L2BEAT", "domain": "l2beat.com", "type": "l2", "priority": 1, "status": "active", "capabilities": ["l2", "tvl", "risk"], "is_new": False},
-    {"id": "growthepie", "name": "growthepie", "domain": "growthepie.xyz", "type": "l2", "priority": 2, "status": "active", "capabilities": ["l2", "analytics"], "is_new": True},
-    {"id": "artemis", "name": "Artemis", "domain": "artemis.xyz", "type": "l2", "priority": 3, "status": "active", "capabilities": ["chains", "analytics"], "is_new": True},
+    # Derivatives
+    {"id": "coinglass", "name": "Coinglass", "domain": "coinglass.com", "type": "derivatives", "tier": 2, "priority": 1, "status": "active", "access": "api_public", "capabilities": ["funding", "oi", "liquidations"], "is_new": False},
+    {"id": "laevitas", "name": "Laevitas", "domain": "laevitas.ch", "type": "derivatives", "tier": 2, "priority": 2, "status": "active", "access": "api_limited", "capabilities": ["options", "futures", "greeks"], "is_new": False},
+    {"id": "velodata", "name": "Velo Data", "domain": "velodata.app", "type": "derivatives", "tier": 2, "priority": 3, "status": "active", "access": "api_limited", "capabilities": ["derivatives", "analytics"], "is_new": True},
     
-    # Airdrops & Activities - PARSERS
-    {"id": "icodrops", "name": "ICO Drops", "domain": "icodrops.com", "type": "activities", "priority": 1, "status": "active", "capabilities": ["ico", "launchpads"], "is_new": False},
-    {"id": "dappradar", "name": "DappRadar", "domain": "dappradar.com", "type": "activities", "priority": 2, "status": "active", "capabilities": ["dapps", "rankings"], "is_new": False},
-    {"id": "dropsearn", "name": "DropsEarn", "domain": "dropsearn.com", "type": "activities", "priority": 3, "status": "active", "capabilities": ["airdrops"], "is_new": False},
-    {"id": "airdropalert", "name": "AirdropAlert", "domain": "airdropalert.com", "type": "activities", "priority": 4, "status": "active", "capabilities": ["airdrops", "alerts"], "is_new": False},
+    # On-chain (parser fallback)
+    {"id": "nansen", "name": "Nansen", "domain": "nansen.ai", "type": "onchain", "tier": 2, "priority": 1, "status": "active", "access": "parser", "capabilities": ["wallets", "flows", "smart_money"], "is_new": False},
+    {"id": "arkham", "name": "Arkham Intelligence", "domain": "arkm.io", "type": "onchain", "tier": 2, "priority": 2, "status": "active", "access": "parser", "capabilities": ["entity", "tracking"], "is_new": False},
+    {"id": "dune", "name": "Dune Analytics", "domain": "dune.com", "type": "onchain", "tier": 2, "priority": 3, "status": "active", "access": "api_free_tier", "capabilities": ["queries", "dashboards"], "is_new": False},
+    {"id": "glassnode", "name": "Glassnode", "domain": "glassnode.com", "type": "onchain", "tier": 2, "priority": 4, "status": "active", "access": "api_free_tier", "capabilities": ["metrics", "indicators"], "is_new": False},
+    {"id": "santiment", "name": "Santiment", "domain": "santiment.net", "type": "onchain", "tier": 2, "priority": 5, "status": "active", "access": "graphql_free", "capabilities": ["social", "onchain", "dev"], "is_new": False},
     
-    # News - RSS FEEDS
-    {"id": "cointelegraph", "name": "Cointelegraph", "domain": "cointelegraph.com", "type": "news", "priority": 1, "status": "active", "capabilities": ["news", "analysis"], "is_new": False},
-    {"id": "theblock", "name": "The Block", "domain": "theblock.co", "type": "news", "priority": 2, "status": "active", "capabilities": ["news", "research"], "is_new": False},
-    {"id": "coindesk", "name": "CoinDesk", "domain": "coindesk.com", "type": "news", "priority": 3, "status": "active", "capabilities": ["news", "analysis"], "is_new": False},
-    {"id": "incrypted", "name": "Incrypted", "domain": "incrypted.com", "type": "news", "priority": 4, "status": "active", "capabilities": ["news"], "is_new": False},
+    # Activities
+    {"id": "dropstab", "name": "Dropstab", "domain": "dropstab.com", "type": "intel", "tier": 2, "priority": 1, "status": "active", "access": "parser", "capabilities": ["activities", "events"], "is_new": False},
+    {"id": "dappradar", "name": "DappRadar", "domain": "dappradar.com", "type": "activities", "tier": 2, "priority": 2, "status": "active", "access": "parser", "capabilities": ["dapps", "rankings", "nft"], "is_new": False},
+    {"id": "airdropalert", "name": "AirdropAlert", "domain": "airdropalert.com", "type": "activities", "tier": 2, "priority": 3, "status": "active", "access": "parser", "capabilities": ["airdrops", "alerts"], "is_new": False},
+    {"id": "artemis", "name": "Artemis", "domain": "artemis.xyz", "type": "l2", "tier": 2, "priority": 2, "status": "active", "access": "api_limited", "capabilities": ["chains", "analytics"], "is_new": True},
+    {"id": "tokenterminal", "name": "Token Terminal", "domain": "tokenterminal.com", "type": "defi", "tier": 2, "priority": 2, "status": "active", "access": "api_limited", "capabilities": ["fundamentals", "metrics"], "is_new": False},
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TIER 3 - ОПЦИОНАЛЬНЫЕ (Требуют API ключ - игнорируются без ключа)
+    # ═══════════════════════════════════════════════════════════════════════════
+    
+    {"id": "coingecko", "name": "CoinGecko", "domain": "coingecko.com", "type": "market", "tier": 3, "priority": 1, "status": "needs_key", "access": "api_key", "api_key_env": "CG_API_KEY", "capabilities": ["market", "prices", "coins", "exchanges"], "is_new": False},
+    {"id": "coinmarketcap", "name": "CoinMarketCap", "domain": "coinmarketcap.com", "type": "market", "tier": 3, "priority": 2, "status": "needs_key", "access": "api_key", "api_key_env": "CMC_API_KEY", "capabilities": ["market", "rankings", "ico"], "is_new": False},
+    {"id": "messari", "name": "Messari", "domain": "messari.io", "type": "research", "tier": 3, "priority": 3, "status": "needs_key", "access": "api_key", "api_key_env": "MESSARI_API_KEY", "capabilities": ["research", "metrics", "profiles"], "is_new": False},
 ]
 
 
