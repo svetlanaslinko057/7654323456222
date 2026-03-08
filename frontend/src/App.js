@@ -7,7 +7,7 @@ import {
   DollarSign, Unlock, LineChart, Box, Rss, Radio,
   Network, Plus, Trash2, CheckCircle, XCircle, Play, Wifi,
   RotateCcw, AlertTriangle, Key, Newspaper, BookOpen, 
-  Eye, BarChart2, Bell, HelpCircle, GitBranch
+  Eye, BarChart2, Bell, HelpCircle, GitBranch, AlertCircle
 } from 'lucide-react';
 import ForceGraphViewer from './components/ForceGraphViewer';
 import GraphExplorer from './components/GraphExplorer';
@@ -1349,8 +1349,26 @@ function App() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <SectionHeader title="Data Sources Registry" />
-            <div className="flex gap-2">
-              {['all', 'new', 'active', 'planned'].map(filter => (
+            <div className="flex gap-2 items-center">
+              <button
+                onClick={async () => {
+                  setDataSourcesLoading(true);
+                  try {
+                    await fetch(`${API_BASE_URL}/api/discovery/sources/health-check`, { method: 'POST' });
+                    await fetchDataSources();
+                  } catch (e) {
+                    console.error('Health check failed:', e);
+                  }
+                  setDataSourcesLoading(false);
+                }}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1"
+                style={{ backgroundColor: colors.primary, color: 'white' }}
+                data-testid="health-check-btn"
+              >
+                <Activity size={12} />
+                Health Check
+              </button>
+              {['all', 'new', 'active', 'degraded', 'offline', 'planned'].map(filter => (
                 <button
                   key={filter}
                   onClick={() => setDiscoverySourceFilter(filter)}
@@ -1382,6 +1400,8 @@ function App() {
                   if (discoverySourceFilter === 'all') return true;
                   if (discoverySourceFilter === 'new') return source.is_new;
                   if (discoverySourceFilter === 'active') return source.status === 'active';
+                  if (discoverySourceFilter === 'degraded') return source.status === 'degraded';
+                  if (discoverySourceFilter === 'offline') return ['error', 'offline', 'timeout'].includes(source.status);
                   if (discoverySourceFilter === 'planned') return source.status === 'planned';
                   return true;
                 })
@@ -1411,6 +1431,30 @@ function App() {
                       >
                         <CheckCircle size={10} />
                         Active
+                      </span>
+                    ) : source.status === 'degraded' ? (
+                      <span 
+                        className="px-2 py-0.5 rounded-full text-xs flex items-center gap-1"
+                        style={{ backgroundColor: colors.warningSoft || '#FEF3C7', color: colors.warning || '#F59E0B' }}
+                      >
+                        <AlertCircle size={10} />
+                        Key Required
+                      </span>
+                    ) : source.status === 'error' || source.status === 'offline' ? (
+                      <span 
+                        className="px-2 py-0.5 rounded-full text-xs flex items-center gap-1"
+                        style={{ backgroundColor: colors.dangerSoft || '#FEE2E2', color: colors.danger || '#EF4444' }}
+                      >
+                        <XCircle size={10} />
+                        Offline
+                      </span>
+                    ) : source.status === 'timeout' ? (
+                      <span 
+                        className="px-2 py-0.5 rounded-full text-xs flex items-center gap-1"
+                        style={{ backgroundColor: colors.dangerSoft || '#FEE2E2', color: colors.warning || '#F59E0B' }}
+                      >
+                        <Clock size={10} />
+                        Timeout
                       </span>
                     ) : (
                       <span 

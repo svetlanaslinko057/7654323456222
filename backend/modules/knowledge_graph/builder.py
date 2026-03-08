@@ -326,9 +326,9 @@ class GraphBuilder:
         
         try:
             from .real_investments import (
-                ALL_INVESTMENTS, 
+                ALL_INVESTMENTS_EXTENDED as ALL_INVESTMENTS, 
                 PROJECT_TEAM_MEMBERS, 
-                FUND_TEAM_MEMBERS
+                FUND_TEAM_MEMBERS_EXTENDED as FUND_TEAM_MEMBERS
             )
         except ImportError:
             logger.warning("[GraphBuilder] Real investments data not found, using sample")
@@ -344,6 +344,18 @@ class GraphBuilder:
             "pantera": "Pantera Capital",
             "dragonfly": "Dragonfly Capital",
             "multicoin": "Multicoin Capital",
+            # Tier 2 & 3 funds
+            "sequoia": "Sequoia Capital",
+            "galaxy": "Galaxy Digital",
+            "jump-crypto": "Jump Crypto",
+            "framework": "Framework Ventures",
+            "hack-vc": "Hack VC",
+            "animoca": "Animoca Brands",
+            "spartan": "Spartan Group",
+            "delphi": "Delphi Ventures",
+            "dcg": "Digital Currency Group",
+            "placeholder": "Placeholder VC",
+            "robot-ventures": "Robot Ventures",
         }
         
         for fund_slug, fund_name in fund_names.items():

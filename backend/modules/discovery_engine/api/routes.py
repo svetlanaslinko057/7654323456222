@@ -472,6 +472,63 @@ async def get_data_source(source_id: str):
     }
 
 
+@router.post("/sources/health-check")
+async def run_sources_health_check(background_tasks: BackgroundTasks):
+    """
+    Run health check for all data sources.
+    Проверяет реальную работоспособность каждого источника.
+    """
+    from ..health_check import run_health_check
+    
+    try:
+        result = await run_health_check(db)
+        return {
+            "ts": int(datetime.now(timezone.utc).timestamp() * 1000),
+            "status": "completed",
+            **result
+        }
+    except Exception as e:
+        logger.error(f"Health check error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/sources/{source_id}/check")
+async def check_single_source(source_id: str):
+    """Check health of a single data source"""
+    from ..health_check import DataSourceHealthChecker
+    
+    checker = DataSourceHealthChecker(db)
+    try:
+        result = await checker.check_single_source(source_id)
+        
+        # Update status in database
+        status_map = {
+            "active": "active",
+            "needs_key": "degraded",
+            "rate_limited": "degraded",
+            "timeout": "timeout",
+            "offline": "offline",
+            "error": "error"
+        }
+        db_status = status_map.get(result["status"], "unknown")
+        
+        await db.data_sources.update_one(
+            {"id": source_id},
+            {"$set": {
+                "status": db_status,
+                "last_check": result,
+                "last_checked_at": result["checked_at"]
+            }}
+        )
+        
+        return {
+            "ts": int(datetime.now(timezone.utc).timestamp() * 1000),
+            **result
+        }
+    finally:
+        await checker.close()
+
+
 # ═══════════════════════════════════════════════════════════════
 # DRIFT DETECTION
 # ═══════════════════════════════════════════════════════════════

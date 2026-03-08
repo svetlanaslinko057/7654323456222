@@ -327,6 +327,132 @@ class SentimentScheduler:
             "scheduler_running": self._running
         }
     
+    async def _monitor_sentiment_shifts(self):
+        """
+        Monitor for significant sentiment shifts and send WebSocket alerts.
+        Triggers alert when sentiment changes >20% for an asset within 1 hour.
+        """
+        try:
+            from modules.websocket import broadcast_sentiment_alert
+            
+            cache_col = self.db[SENTIMENT_CACHE_COLLECTION]
+            shifts_col = self.db["sentiment_shifts"]
+            
+            # Get events from last hour
+            one_hour_ago = datetime.now(timezone.utc) - timedelta(hours=1)
+            two_hours_ago = datetime.now(timezone.utc) - timedelta(hours=2)
+            
+            # Get recent sentiment scores by asset
+            pipeline = [
+                {
+                    "$match": {
+                        "analyzed_at": {"$gte": one_hour_ago.isoformat()}
+                    }
+                },
+                {
+                    "$unwind": {"path": "$assets", "preserveNullAndEmptyArrays": True}
+                },
+                {
+                    "$group": {
+                        "_id": "$assets",
+                        "current_avg": {"$avg": "$consensus.score"},
+                        "count": {"$sum": 1},
+                        "latest": {"$max": "$analyzed_at"}
+                    }
+                },
+                {
+                    "$match": {"_id": {"$ne": None}, "count": {"$gte": 2}}
+                }
+            ]
+            
+            current_sentiments = {}
+            async for doc in cache_col.aggregate(pipeline):
+                asset = doc["_id"]
+                if asset:
+                    current_sentiments[asset] = {
+                        "score": doc["current_avg"],
+                        "count": doc["count"]
+                    }
+            
+            # Get previous hour sentiment for comparison
+            pipeline_prev = [
+                {
+                    "$match": {
+                        "analyzed_at": {
+                            "$gte": two_hours_ago.isoformat(),
+                            "$lt": one_hour_ago.isoformat()
+                        }
+                    }
+                },
+                {
+                    "$unwind": {"path": "$assets", "preserveNullAndEmptyArrays": True}
+                },
+                {
+                    "$group": {
+                        "_id": "$assets",
+                        "prev_avg": {"$avg": "$consensus.score"},
+                        "count": {"$sum": 1}
+                    }
+                }
+            ]
+            
+            previous_sentiments = {}
+            async for doc in cache_col.aggregate(pipeline_prev):
+                asset = doc["_id"]
+                if asset:
+                    previous_sentiments[asset] = doc["prev_avg"]
+            
+            # Detect shifts > 20%
+            alerts_sent = 0
+            for asset, current in current_sentiments.items():
+                if asset in previous_sentiments:
+                    prev_score = previous_sentiments[asset]
+                    curr_score = current["score"]
+                    
+                    # Calculate percentage change
+                    if abs(prev_score) > 0.01:  # Avoid division by near-zero
+                        change_percent = ((curr_score - prev_score) / abs(prev_score)) * 100
+                    else:
+                        change_percent = (curr_score - prev_score) * 100
+                    
+                    # Alert if change > 20%
+                    if abs(change_percent) >= 20:
+                        alert = {
+                            "asset": asset,
+                            "asset_name": asset.upper(),
+                            "previous": round(prev_score, 3),
+                            "current": round(curr_score, 3),
+                            "change_percent": round(change_percent, 1),
+                            "time_window": "1h",
+                            "confidence": "high" if current["count"] >= 5 else "medium",
+                            "sources": [],
+                            "detected_at": datetime.now(timezone.utc).isoformat()
+                        }
+                        
+                        # Store shift in database
+                        await shifts_col.insert_one({
+                            **alert,
+                            "sent": True
+                        })
+                        
+                        # Send WebSocket alert
+                        await broadcast_sentiment_alert(alert)
+                        alerts_sent += 1
+                        
+                        logger.info(f"[SentimentScheduler] Shift alert: {asset} {change_percent:.1f}%")
+            
+            logger.info(f"[SentimentScheduler] Sentiment monitoring: {alerts_sent} alerts sent")
+            
+            return {
+                "assets_monitored": len(current_sentiments),
+                "alerts_sent": alerts_sent,
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+            
+        except Exception as e:
+            logger.error(f"[SentimentScheduler] Sentiment monitoring failed: {e}")
+            raise
+    
     def start(self):
         """Start the sentiment scheduler"""
         if self._running:
@@ -347,6 +473,15 @@ class SentimentScheduler:
             CronTrigger(hour=3, minute=0),  # Daily at 3:00 UTC
             id="sentiment_cache_cleanup",
             name="Sentiment Cache Cleanup",
+            replace_existing=True
+        )
+        
+        # Add sentiment shift monitoring job
+        self.scheduler.add_job(
+            self._monitor_sentiment_shifts,
+            IntervalTrigger(minutes=5),
+            id="sentiment_shift_monitor",
+            name="Monitor Sentiment Shifts",
             replace_existing=True
         )
         

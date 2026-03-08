@@ -274,6 +274,17 @@ COMMON_ALIASES = {
         "dragonfly": ["Dragonfly", "Dragonfly Capital"],
         "multicoin": ["Multicoin", "Multicoin Capital"],
         "framework": ["Framework", "Framework Ventures"],
+        # Additional funds
+        "sequoia": ["Sequoia", "Sequoia Capital", "Sequoia Crypto"],
+        "galaxy": ["Galaxy", "Galaxy Digital", "Galaxy Investments"],
+        "jump-crypto": ["Jump Crypto", "Jump", "Jump Trading Crypto", "Jump Capital"],
+        "hack-vc": ["Hack VC", "Hack Ventures", "HackVC"],
+        "animoca": ["Animoca", "Animoca Brands"],
+        "spartan": ["Spartan", "Spartan Group", "Spartan Capital"],
+        "delphi": ["Delphi", "Delphi Ventures", "Delphi Digital", "Delphi Labs"],
+        "dcg": ["DCG", "Digital Currency Group", "Grayscale parent"],
+        "placeholder": ["Placeholder", "Placeholder VC", "Placeholder Ventures"],
+        "robot-ventures": ["Robot Ventures", "Robot", "Tarun Chitra Fund"],
     },
     "person": {
         "vitalik": ["Vitalik", "Vitalik Buterin", "Vitaly Buterin", "V. Buterin", "vitalik.eth"],

@@ -292,3 +292,181 @@ ALL_INVESTMENTS = {
     "dragonfly": DRAGONFLY_INVESTMENTS,
     "multicoin": MULTICOIN_INVESTMENTS,
 }
+
+# ============================================================================
+# TIER 2 & 3 FUNDS (Additional)
+# ============================================================================
+
+# Sequoia Capital - Crypto Portfolio
+SEQUOIA_INVESTMENTS = [
+    {"project": "solana", "name": "Solana", "amount": 314000000, "round": "Series A", "year": 2021},
+    {"project": "polygon", "name": "Polygon", "amount": 450000000, "round": "Private Sale", "year": 2022},
+    {"project": "ftx", "name": "FTX", "amount": 420000000, "round": "Series B", "year": 2021},
+    {"project": "fireblocks", "name": "Fireblocks", "amount": 310000000, "round": "Series E", "year": 2022},
+    {"project": "alchemy", "name": "Alchemy", "amount": 200000000, "round": "Series C", "year": 2022},
+    {"project": "aptos", "name": "Aptos", "amount": 200000000, "round": "Series A", "year": 2022},
+]
+
+# Galaxy Digital - Portfolio
+GALAXY_INVESTMENTS = [
+    {"project": "celsius", "name": "Celsius Network", "amount": 400000000, "round": "Series B", "year": 2021},
+    {"project": "fireblocks", "name": "Fireblocks", "amount": 80000000, "round": "Series C", "year": 2021},
+    {"project": "figment", "name": "Figment", "amount": 50000000, "round": "Series B", "year": 2021},
+    {"project": "blockdaemon", "name": "Blockdaemon", "amount": 155000000, "round": "Series B", "year": 2022},
+    {"project": "cryptoslam", "name": "CryptoSlam", "amount": 9000000, "round": "Series A", "year": 2022},
+]
+
+# Jump Crypto - Portfolio  
+JUMP_CRYPTO_INVESTMENTS = [
+    {"project": "wormhole", "name": "Wormhole", "amount": 225000000, "round": "Private", "year": 2023},
+    {"project": "solana", "name": "Solana", "amount": 50000000, "round": "Strategic", "year": 2021},
+    {"project": "terra", "name": "Terraform Labs", "amount": 40000000, "round": "Strategic", "year": 2021},
+    {"project": "sei", "name": "Sei Network", "amount": 30000000, "round": "Series A", "year": 2023},
+    {"project": "monad", "name": "Monad", "amount": 225000000, "round": "Series A", "year": 2024},
+    {"project": "pyth", "name": "Pyth Network", "amount": 0, "round": "Founding Team", "year": 2021},
+]
+
+# Framework Ventures - Portfolio
+FRAMEWORK_INVESTMENTS = [
+    {"project": "chainlink", "name": "Chainlink", "amount": 0, "round": "Early", "year": 2017},
+    {"project": "aave", "name": "Aave", "amount": 3000000, "round": "Seed", "year": 2020},
+    {"project": "synthetix", "name": "Synthetix", "amount": 2000000, "round": "Seed", "year": 2019},
+    {"project": "yearn", "name": "Yearn Finance", "amount": 0, "round": "Investor", "year": 2020},
+    {"project": "tokemak", "name": "Tokemak", "amount": 4000000, "round": "Seed", "year": 2021},
+    {"project": "goldfinch", "name": "Goldfinch", "amount": 11000000, "round": "Series A", "year": 2021},
+    {"project": "radicle", "name": "Radicle", "amount": 12000000, "round": "Series A", "year": 2021},
+]
+
+# Hack VC - Portfolio
+HACK_VC_INVESTMENTS = [
+    {"project": "eigenlayer", "name": "EigenLayer", "amount": 50000000, "round": "Series A", "year": 2023},
+    {"project": "starkware", "name": "StarkWare", "amount": 0, "round": "Seed", "year": 2018},
+    {"project": "zksync", "name": "Matter Labs (zkSync)", "amount": 50000000, "round": "Series B", "year": 2022},
+    {"project": "celestia", "name": "Celestia", "amount": 55000000, "round": "Series A", "year": 2022},
+    {"project": "berachain", "name": "Berachain", "amount": 42000000, "round": "Series A", "year": 2023},
+]
+
+# Animoca Brands - Portfolio
+ANIMOCA_INVESTMENTS = [
+    {"project": "sandbox", "name": "The Sandbox", "amount": 0, "round": "Acquisition", "year": 2018},
+    {"project": "axie-infinity", "name": "Sky Mavis (Axie)", "amount": 7500000, "round": "Series A", "year": 2020},
+    {"project": "opensea", "name": "OpenSea", "amount": 0, "round": "Strategic", "year": 2022},
+    {"project": "dapper-labs", "name": "Dapper Labs", "amount": 0, "round": "Strategic", "year": 2020},
+    {"project": "yuga-labs", "name": "Yuga Labs", "amount": 450000000, "round": "Seed", "year": 2022},
+    {"project": "polygon", "name": "Polygon", "amount": 0, "round": "Strategic", "year": 2022},
+    {"project": "mocaverse", "name": "Mocaverse", "amount": 0, "round": "Internal", "year": 2023},
+]
+
+# Spartan Group - Portfolio
+SPARTAN_INVESTMENTS = [
+    {"project": "solana", "name": "Solana", "amount": 0, "round": "Early", "year": 2019},
+    {"project": "aptos", "name": "Aptos", "amount": 0, "round": "Strategic", "year": 2022},
+    {"project": "sui", "name": "Sui", "amount": 0, "round": "Strategic", "year": 2022},
+    {"project": "sei", "name": "Sei Network", "amount": 30000000, "round": "Series A", "year": 2023},
+    {"project": "pendle", "name": "Pendle", "amount": 3000000, "round": "Seed", "year": 2021},
+    {"project": "radiant", "name": "Radiant Capital", "amount": 10000000, "round": "Seed", "year": 2022},
+]
+
+# Delphi Ventures - Portfolio
+DELPHI_INVESTMENTS = [
+    {"project": "axie-infinity", "name": "Sky Mavis (Axie)", "amount": 7500000, "round": "Series A", "year": 2020},
+    {"project": "ribbon", "name": "Ribbon Finance", "amount": 8500000, "round": "Series A", "year": 2021},
+    {"project": "pendle", "name": "Pendle", "amount": 2000000, "round": "Seed", "year": 2021},
+    {"project": "gearbox", "name": "Gearbox Protocol", "amount": 4000000, "round": "Seed", "year": 2022},
+    {"project": "radiant", "name": "Radiant Capital", "amount": 10000000, "round": "Seed", "year": 2022},
+    {"project": "kwenta", "name": "Kwenta", "amount": 0, "round": "Treasury", "year": 2022},
+]
+
+# Digital Currency Group (DCG) - Portfolio
+DCG_INVESTMENTS = [
+    {"project": "coinbase", "name": "Coinbase", "amount": 25000000, "round": "Series C", "year": 2015},
+    {"project": "circle", "name": "Circle", "amount": 50000000, "round": "Series C", "year": 2015},
+    {"project": "ripple", "name": "Ripple", "amount": 0, "round": "Early", "year": 2013},
+    {"project": "kraken", "name": "Kraken", "amount": 0, "round": "Series A", "year": 2014},
+    {"project": "chainalysis", "name": "Chainalysis", "amount": 100000000, "round": "Series E", "year": 2021},
+    {"project": "blockstream", "name": "Blockstream", "amount": 55000000, "round": "Series A", "year": 2016},
+    {"project": "ledger", "name": "Ledger", "amount": 75000000, "round": "Series B", "year": 2018},
+]
+
+# Placeholder VC - Portfolio
+PLACEHOLDER_INVESTMENTS = [
+    {"project": "polkadot", "name": "Polkadot", "amount": 0, "round": "Early", "year": 2017},
+    {"project": "cosmos", "name": "Cosmos", "amount": 0, "round": "ICO", "year": 2017},
+    {"project": "arweave", "name": "Arweave", "amount": 5000000, "round": "Series A", "year": 2020},
+    {"project": "decentraland", "name": "Decentraland", "amount": 0, "round": "Early", "year": 2017},
+    {"project": "zcash", "name": "Zcash", "amount": 0, "round": "Early", "year": 2016},
+    {"project": "maker", "name": "MakerDAO", "amount": 12000000, "round": "Series A", "year": 2018},
+]
+
+# Robot Ventures - Portfolio (Tarun Chitra)
+ROBOT_VENTURES_INVESTMENTS = [
+    {"project": "uniswap", "name": "Uniswap", "amount": 0, "round": "Seed", "year": 2019},
+    {"project": "compound", "name": "Compound", "amount": 0, "round": "Seed", "year": 2018},
+    {"project": "flashbots", "name": "Flashbots", "amount": 60000000, "round": "Series B", "year": 2023},
+    {"project": "eigenlayer", "name": "EigenLayer", "amount": 50000000, "round": "Series A", "year": 2023},
+    {"project": "anoma", "name": "Anoma", "amount": 26000000, "round": "Series A", "year": 2022},
+]
+
+# Additional fund team members
+ADDITIONAL_FUND_TEAMS = {
+    "sequoia": [
+        {"id": "roelof-botha", "name": "Roelof Botha", "role": "Senior Partner"},
+        {"id": "shaun-maguire", "name": "Shaun Maguire", "role": "Partner"},
+    ],
+    "galaxy": [
+        {"id": "mike-novogratz", "name": "Mike Novogratz", "role": "Founder & CEO"},
+    ],
+    "jump-crypto": [
+        {"id": "kanav-kariya", "name": "Kanav Kariya", "role": "President"},
+    ],
+    "framework": [
+        {"id": "vance-spencer", "name": "Vance Spencer", "role": "Co-founder"},
+        {"id": "michael-anderson", "name": "Michael Anderson", "role": "Co-founder"},
+    ],
+    "hack-vc": [
+        {"id": "ed-roman", "name": "Ed Roman", "role": "Co-founder & Managing Partner"},
+        {"id": "alex-pack", "name": "Alex Pack", "role": "Co-founder & Managing Partner"},
+    ],
+    "animoca": [
+        {"id": "yat-siu", "name": "Yat Siu", "role": "Co-founder & Chairman"},
+    ],
+    "spartan": [
+        {"id": "kelvin-koh", "name": "Kelvin Koh", "role": "Managing Partner"},
+    ],
+    "delphi": [
+        {"id": "tom-shaughnessy", "name": "Tom Shaughnessy", "role": "Co-founder"},
+        {"id": "jose-maria-macedo", "name": "José Maria Macedo", "role": "Co-founder"},
+    ],
+    "dcg": [
+        {"id": "barry-silbert", "name": "Barry Silbert", "role": "Founder & CEO"},
+    ],
+    "placeholder": [
+        {"id": "chris-burniske", "name": "Chris Burniske", "role": "Partner"},
+        {"id": "joel-monegro", "name": "Joel Monegro", "role": "Partner"},
+    ],
+    "robot-ventures": [
+        {"id": "tarun-chitra", "name": "Tarun Chitra", "role": "Founder & GP"},
+    ],
+}
+
+# Extended ALL_INVESTMENTS with new funds
+ALL_INVESTMENTS_EXTENDED = {
+    **ALL_INVESTMENTS,
+    "sequoia": SEQUOIA_INVESTMENTS,
+    "galaxy": GALAXY_INVESTMENTS,
+    "jump-crypto": JUMP_CRYPTO_INVESTMENTS,
+    "framework": FRAMEWORK_INVESTMENTS,
+    "hack-vc": HACK_VC_INVESTMENTS,
+    "animoca": ANIMOCA_INVESTMENTS,
+    "spartan": SPARTAN_INVESTMENTS,
+    "delphi": DELPHI_INVESTMENTS,
+    "dcg": DCG_INVESTMENTS,
+    "placeholder": PLACEHOLDER_INVESTMENTS,
+    "robot-ventures": ROBOT_VENTURES_INVESTMENTS,
+}
+
+# Extended fund team members
+FUND_TEAM_MEMBERS_EXTENDED = {
+    **FUND_TEAM_MEMBERS,
+    **ADDITIONAL_FUND_TEAMS,
+}

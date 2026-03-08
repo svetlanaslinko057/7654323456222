@@ -1,0 +1,1343 @@
+{
+  "summary": {
+    "total_tests": 11,
+    "passed_tests": 8,
+    "failed_tests": 3,
+    "success_rate": 72.72727272727273,
+    "test_timestamp": "2026-03-08T20:56:51.770496"
+  },
+  "test_results": [
+    {
+      "test_name": "Basic Health Check",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 179,
+        "response_time_ms": 252,
+        "response_data": {
+          "ok": true,
+          "service": "FOMO Market Data API",
+          "version": "2.0.0",
+          "ts": 1773003381056,
+          "layers": {
+            "market_data": [
+              "binance",
+              "bybit",
+              "coinbase",
+              "hyperliquid"
+            ],
+            "asset_intel": "coming_soon"
+          }
+        }
+      },
+      "timestamp": "2026-03-08T20:56:21.084888"
+    },
+    {
+      "test_name": "Graph Statistics",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 321,
+        "response_time_ms": 65,
+        "response_data": {
+          "total_nodes": 281,
+          "total_edges": 499,
+          "nodes_by_type": {
+            "person": 73,
+            "token": 44,
+            "exchange": 10,
+            "asset": 23,
+            "fund": 21,
+            "project": 110
+          },
+          "edges_by_type": {
+            "founded": 36,
+            "works_at": 40,
+            "advisor_of": 1,
+            "invested_in": 186,
+            "mapped_to_asset": 23,
+            "traded_on": 69,
+            "has_token": 63,
+            "coinvested_with": 81
+          },
+          "last_rebuild": "2026-03-08T20:54:25.086000"
+        }
+      },
+      "timestamp": "2026-03-08T20:56:21.151082"
+    },
+    {
+      "test_name": "Discovery Sources",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 21184,
+        "response_time_ms": 62,
+        "response_data": {
+          "ts": 1773003381195,
+          "total": 34,
+          "sources": [
+            {
+              "id": "coingecko",
+              "api_key_required": false,
+              "categories": [
+                "market",
+                "projects",
+                "analytics"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "prices",
+                "market_cap",
+                "volume",
+                "project_info",
+                "categories",
+                "exchanges"
+              ],
+              "description": "Primary source for market data and project profiles",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": null,
+              "name": "CoinGecko",
+              "parser_module": "parser_coingecko",
+              "priority": 1,
+              "rate_limit": "50 req/min",
+              "status": "error",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "website": "https://coingecko.com",
+              "capabilities": [
+                "market",
+                "projects",
+                "analytics"
+              ],
+              "domain": "coingecko.com",
+              "is_new": false,
+              "type": "market",
+              "last_check": {
+                "source_id": "coingecko",
+                "status": "error",
+                "http_status": 429,
+                "message": "Unexpected status: 429",
+                "response_time_ms": 64,
+                "checked_at": "2026-03-08T20:50:14.651231+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:14.651231+00:00",
+              "synced": false
+            },
+            {
+              "id": "cryptorank",
+              "api_key_required": false,
+              "categories": [
+                "funding",
+                "ico",
+                "unlocks",
+                "activities",
+                "analytics"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "funding_rounds",
+                "investors",
+                "ico_calendar",
+                "unlocks",
+                "activities"
+              ],
+              "description": "Primary source for funding data and token unlocks",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": null,
+              "name": "CryptoRank",
+              "parser_module": "parser_cryptorank",
+              "priority": 1,
+              "rate_limit": "30 req/min",
+              "status": "degraded",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "website": "https://cryptorank.io",
+              "capabilities": [
+                "funds",
+                "vc",
+                "investments"
+              ],
+              "domain": "cryptorank.io",
+              "is_new": true,
+              "type": "intel",
+              "last_check": {
+                "source_id": "cryptorank",
+                "status": "needs_key",
+                "http_status": 401,
+                "message": "API key required",
+                "response_time_ms": 264,
+                "checked_at": "2026-03-08T20:50:15.416525+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:15.416525+00:00",
+              "synced": false
+            },
+            {
+              "id": "dropstab",
+              "api_key_required": false,
+              "categories": [
+                "activities"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "airdrops",
+                "campaigns",
+                "testnets",
+                "points_programs"
+              ],
+              "description": "Primary source for crypto activities and airdrops",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "Dropstab",
+              "parser_module": "parser_activities",
+              "priority": 2,
+              "rate_limit": "10 req/min",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "website": "https://dropstab.com",
+              "capabilities": [
+                "activities"
+              ],
+              "domain": "dropstab.com",
+              "is_new": false,
+              "type": "intel",
+              "last_check": {
+                "source_id": "dropstab",
+                "status": "active",
+                "http_status": 404,
+                "message": "OK (404)",
+                "response_time_ms": 447,
+                "checked_at": "2026-03-08T20:50:16.365732+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:16.365732+00:00",
+              "synced": true,
+              "last_sync_ago": "Never"
+            },
+            {
+              "id": "tokenunlocks",
+              "api_key_required": false,
+              "categories": [
+                "unlocks"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "unlock_schedules",
+                "vesting_data",
+                "cliff_dates"
+              ],
+              "description": "Specialized source for token unlock data",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": null,
+              "name": "TokenUnlocks",
+              "parser_module": "parser_tokenunlocks",
+              "priority": 1,
+              "rate_limit": "10 req/min",
+              "status": "error",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "website": "https://token.unlocks.app",
+              "capabilities": [
+                "unlocks"
+              ],
+              "domain": "token.unlocks.app",
+              "is_new": false,
+              "type": "unlocks",
+              "last_check": {
+                "source_id": "tokenunlocks",
+                "status": "error",
+                "http_status": 404,
+                "message": "Unexpected status: 404",
+                "response_time_ms": 365,
+                "checked_at": "2026-03-08T20:50:17.319506+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:17.319506+00:00",
+              "synced": false
+            },
+            {
+              "id": "defillama",
+              "api_key_required": false,
+              "categories": [
+                "defi",
+                "projects",
+                "analytics"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "tvl",
+                "protocol_data",
+                "yields",
+                "bridges"
+              ],
+              "description": "DeFi analytics and TVL tracking",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": "2026-03-08T19:36:15.463691+00:00",
+              "name": "DefiLlama",
+              "parser_module": "parser_defillama",
+              "priority": 1,
+              "rate_limit": "100 req/min",
+              "status": "active",
+              "sync_count": 3,
+              "updated_at": "2026-03-08T19:36:15.463691+00:00",
+              "website": "https://defillama.com",
+              "capabilities": [
+                "defi",
+                "projects",
+                "analytics"
+              ],
+              "domain": "defillama.com",
+              "is_new": false,
+              "type": "defi",
+              "last_check": {
+                "source_id": "defillama",
+                "status": "active",
+                "http_status": 200,
+                "message": "Working",
+                "response_time_ms": 473,
+                "checked_at": "2026-03-08T20:50:18.298235+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:18.298235+00:00",
+              "synced": true,
+              "last_sync_ago": "1h ago"
+            },
+            {
+              "id": "rootdata",
+              "api_key_required": false,
+              "categories": [
+                "funding",
+                "funds",
+                "persons"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "funding_rounds",
+                "investor_profiles",
+                "team_members"
+              ],
+              "description": "Crypto investment and fund data",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": null,
+              "name": "RootData",
+              "parser_module": "parser_rootdata",
+              "priority": 3,
+              "rate_limit": "20 req/min",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "website": "https://rootdata.com",
+              "capabilities": [
+                "funding",
+                "investors"
+              ],
+              "domain": "rootdata.com",
+              "is_new": true,
+              "type": "intel",
+              "last_check": {
+                "source_id": "rootdata",
+                "status": "active",
+                "http_status": 200,
+                "message": "Working",
+                "response_time_ms": 968,
+                "checked_at": "2026-03-08T20:50:19.767878+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:19.767878+00:00",
+              "synced": true,
+              "last_sync_ago": "Never"
+            },
+            {
+              "id": "messari",
+              "api_key_required": true,
+              "categories": [
+                "projects",
+                "funding",
+                "analytics",
+                "news"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "project_profiles",
+                "funding_rounds",
+                "research",
+                "metrics"
+              ],
+              "description": "Research and analytics platform (requires API key)",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": null,
+              "name": "Messari",
+              "parser_module": "parser_messari",
+              "priority": 3,
+              "rate_limit": "20 req/min",
+              "status": "degraded",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "website": "https://messari.io",
+              "capabilities": [
+                "projects",
+                "funding",
+                "analytics"
+              ],
+              "domain": "messari.io",
+              "is_new": false,
+              "type": "research",
+              "last_check": {
+                "source_id": "messari",
+                "status": "needs_key",
+                "http_status": 401,
+                "message": "API key required",
+                "response_time_ms": 207,
+                "checked_at": "2026-03-08T20:50:20.476070+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:20.476070+00:00",
+              "synced": false
+            },
+            {
+              "id": "coinmarketcap",
+              "api_key_required": true,
+              "categories": [
+                "market",
+                "projects",
+                "ico",
+                "activities"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "prices",
+                "market_cap",
+                "volume",
+                "ico_calendar",
+                "airdrops"
+              ],
+              "description": "Alternative market data source (requires API key)",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": null,
+              "name": "CoinMarketCap",
+              "parser_module": "parser_coinmarketcap",
+              "priority": 2,
+              "rate_limit": "30 req/min",
+              "status": "degraded",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "website": "https://coinmarketcap.com",
+              "capabilities": [
+                "market",
+                "projects",
+                "ico"
+              ],
+              "domain": "coinmarketcap.com",
+              "is_new": false,
+              "type": "market",
+              "last_check": {
+                "source_id": "coinmarketcap",
+                "status": "needs_key",
+                "http_status": 401,
+                "message": "API key required",
+                "response_time_ms": 123,
+                "checked_at": "2026-03-08T20:50:21.100491+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:21.100491+00:00",
+              "synced": false
+            },
+            {
+              "id": "icodrops",
+              "api_key_required": false,
+              "categories": [
+                "ico"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "ico_calendar",
+                "token_sales",
+                "launchpads"
+              ],
+              "description": "ICO and token sale calendar",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "ICO Drops",
+              "parser_module": "parser_icodrops",
+              "priority": "medium",
+              "rate_limit": "10 req/min",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://icodrops.com",
+              "last_check": {
+                "source_id": "icodrops",
+                "status": "active",
+                "http_status": 200,
+                "message": "Working",
+                "response_time_ms": 1756,
+                "checked_at": "2026-03-08T20:50:23.358217+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:23.358217+00:00",
+              "synced": true,
+              "last_sync_ago": "Never",
+              "is_new": false
+            },
+            {
+              "id": "dappradar",
+              "api_key_required": false,
+              "categories": [
+                "defi",
+                "projects"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "dapps",
+                "usage_stats",
+                "rankings"
+              ],
+              "description": "DApp analytics and rankings",
+              "error_count": 0,
+              "has_api": true,
+              "last_error": null,
+              "last_sync": null,
+              "name": "DappRadar",
+              "parser_module": "parser_dappradar",
+              "priority": "medium",
+              "rate_limit": "50 req/min",
+              "status": "offline",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://dappradar.com",
+              "last_check": {
+                "source_id": "dappradar",
+                "status": "offline",
+                "message": "Connection failed: [Errno -5] No address associated with hostname",
+                "checked_at": "2026-03-08T20:50:23.907410+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:23.907410+00:00",
+              "synced": false,
+              "is_new": false
+            },
+            {
+              "id": "dropsearn",
+              "api_key_required": false,
+              "categories": [
+                "activities"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "airdrops",
+                "campaigns",
+                "testnets"
+              ],
+              "description": "Alternative source for airdrop campaigns",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "DropsEarn",
+              "parser_module": "parser_activities",
+              "priority": "medium",
+              "rate_limit": "10 req/min",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://dropsearn.com",
+              "last_check": {
+                "source_id": "dropsearn",
+                "status": "active",
+                "http_status": 200,
+                "message": "Working",
+                "response_time_ms": 1029,
+                "checked_at": "2026-03-08T20:50:25.837573+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:25.837573+00:00",
+              "synced": true,
+              "last_sync_ago": "Never",
+              "is_new": false
+            },
+            {
+              "id": "airdropalert",
+              "api_key_required": false,
+              "categories": [
+                "activities"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "airdrops"
+              ],
+              "description": "Airdrop aggregator",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "AirdropAlert",
+              "parser_module": "parser_airdropalert",
+              "priority": "medium",
+              "rate_limit": "N/A",
+              "status": "error",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://airdropalert.com",
+              "last_check": {
+                "source_id": "airdropalert",
+                "status": "error",
+                "http_status": 429,
+                "message": "Unexpected status: 429",
+                "response_time_ms": 135,
+                "checked_at": "2026-03-08T20:50:26.474174+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:26.474174+00:00",
+              "synced": false,
+              "is_new": false
+            },
+            {
+              "id": "cointelegraph",
+              "api_key_required": false,
+              "categories": [
+                "news"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "news_articles",
+                "market_updates"
+              ],
+              "description": "Crypto news source (RSS)",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "Cointelegraph",
+              "parser_module": "parser_news",
+              "priority": "low",
+              "rate_limit": "N/A",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://cointelegraph.com",
+              "last_check": {
+                "source_id": "cointelegraph",
+                "status": "active",
+                "http_status": 200,
+                "message": "RSS feed working",
+                "response_time_ms": 106,
+                "checked_at": "2026-03-08T20:50:27.082937+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:27.082937+00:00",
+              "synced": true,
+              "last_sync_ago": "Never",
+              "is_new": false
+            },
+            {
+              "id": "theblock",
+              "api_key_required": false,
+              "categories": [
+                "news",
+                "analytics"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "news_articles",
+                "research",
+                "data"
+              ],
+              "description": "Crypto news and research (RSS)",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "The Block",
+              "parser_module": "parser_news",
+              "priority": "low",
+              "rate_limit": "N/A",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://theblock.co",
+              "last_check": {
+                "source_id": "theblock",
+                "status": "active",
+                "http_status": 200,
+                "message": "RSS feed working",
+                "response_time_ms": 107,
+                "checked_at": "2026-03-08T20:50:27.691759+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:27.691759+00:00",
+              "synced": true,
+              "last_sync_ago": "Never",
+              "is_new": false
+            },
+            {
+              "id": "coindesk",
+              "api_key_required": false,
+              "categories": [
+                "news"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "news_articles",
+                "market_updates"
+              ],
+              "description": "Crypto news source (RSS)",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "CoinDesk",
+              "parser_module": "parser_news",
+              "priority": "low",
+              "rate_limit": "N/A",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://coindesk.com",
+              "last_check": {
+                "source_id": "coindesk",
+                "status": "active",
+                "http_status": 200,
+                "message": "RSS feed working",
+                "response_time_ms": 4880,
+                "checked_at": "2026-03-08T20:50:33.195160+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:33.195160+00:00",
+              "synced": true,
+              "last_sync_ago": "Never",
+              "is_new": false
+            },
+            {
+              "id": "incrypted",
+              "api_key_required": false,
+              "categories": [
+                "news",
+                "analytics"
+              ],
+              "created_at": "2026-03-08T18:46:23.920850+00:00",
+              "data_types": [
+                "news_articles",
+                "market_updates",
+                "research",
+                "guides",
+                "airdrops",
+                "tokensales"
+              ],
+              "description": "Ukrainian crypto news, analytics, airdrops, tokensales - primary news source",
+              "error_count": 0,
+              "has_api": false,
+              "last_error": null,
+              "last_sync": null,
+              "name": "Incrypted",
+              "parser_module": "parser_incrypted",
+              "priority": "critical",
+              "rate_limit": "N/A",
+              "status": "active",
+              "sync_count": 0,
+              "updated_at": "2026-03-08T18:46:23.920850+00:00",
+              "website": "https://incrypted.com",
+              "last_check": {
+                "source_id": "incrypted",
+                "status": "active",
+                "http_status": 200,
+                "message": "RSS feed working",
+                "response_time_ms": 2213,
+                "checked_at": "2026-03-08T20:50:36.283048+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:36.283048+00:00",
+              "synced": true,
+              "last_sync_ago": "Never",
+              "is_new": false
+            },
+            {
+              "id": "tokenterminal",
+              "capabilities": [
+                "defi",
+                "fundamentals"
+              ],
+              "domain": "tokenterminal.com",
+              "is_new": false,
+              "name": "Token Terminal",
+              "priority": 2,
+              "status": "active",
+              "type": "defi",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "tokenterminal",
+                "status": "active",
+                "http_status": 403,
+                "message": "OK (403)",
+                "response_time_ms": 71,
+                "checked_at": "2026-03-08T20:50:36.856571+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:36.856571+00:00",
+              "synced": true,
+              "last_sync_ago": "Never"
+            },
+            {
+              "id": "dexscreener",
+              "capabilities": [
+                "dex",
+                "pairs",
+                "screener"
+              ],
+              "domain": "dexscreener.com",
+              "is_new": false,
+              "name": "DEXScreener",
+              "priority": 1,
+              "status": "active",
+              "type": "dex",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "dexscreener",
+                "status": "active",
+                "http_status": 200,
+                "message": "Working",
+                "response_time_ms": 58,
+                "checked_at": "2026-03-08T20:50:37.416745+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:37.416745+00:00",
+              "synced": true,
+              "last_sync_ago": "Never"
+            },
+            {
+              "id": "geckoterminal",
+              "capabilities": [
+                "dex",
+                "pools",
+                "analytics"
+              ],
+              "domain": "geckoterminal.com",
+              "is_new": false,
+              "name": "GeckoTerminal",
+              "priority": 2,
+              "status": "active",
+              "type": "dex",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "geckoterminal",
+                "status": "active",
+                "http_status": 200,
+                "message": "Working",
+                "response_time_ms": 110,
+                "checked_at": "2026-03-08T20:50:38.028426+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:38.028426+00:00",
+              "synced": true,
+              "last_sync_ago": "Never"
+            },
+            {
+              "id": "dextools",
+              "capabilities": [
+                "dex",
+                "pairs",
+                "hot"
+              ],
+              "domain": "dextools.io",
+              "is_new": false,
+              "name": "DEXTools",
+              "priority": 3,
+              "status": "error",
+              "type": "dex",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "dextools",
+                "status": "error",
+                "http_status": 403,
+                "message": "Unexpected status: 403",
+                "response_time_ms": 296,
+                "checked_at": "2026-03-08T20:50:38.825762+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:38.825762+00:00",
+              "synced": false
+            },
+            {
+              "id": "defined",
+              "capabilities": [
+                "dex",
+                "analytics"
+              ],
+              "domain": "defined.fi",
+              "is_new": true,
+              "name": "Defined.fi",
+              "priority": 4,
+              "status": "error",
+              "type": "dex",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "defined",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:39.326457+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:39.326457+00:00",
+              "synced": false
+            },
+            {
+              "id": "crunchbase",
+              "capabilities": [
+                "funding",
+                "companies"
+              ],
+              "domain": "crunchbase.com",
+              "is_new": false,
+              "name": "Crunchbase",
+              "priority": 4,
+              "status": "error",
+              "type": "intel",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "crunchbase",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:39.827534+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:39.827534+00:00",
+              "synced": false
+            },
+            {
+              "id": "vestlab",
+              "capabilities": [
+                "unlocks",
+                "vesting"
+              ],
+              "domain": "vestlab.io",
+              "is_new": true,
+              "name": "VestLab",
+              "priority": 2,
+              "status": "error",
+              "type": "unlocks",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "vestlab",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:40.328627+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:40.328627+00:00",
+              "synced": false
+            },
+            {
+              "id": "coinglass",
+              "capabilities": [
+                "funding",
+                "oi",
+                "liquidations"
+              ],
+              "domain": "coinglass.com",
+              "is_new": false,
+              "name": "Coinglass",
+              "priority": 1,
+              "status": "active",
+              "type": "derivatives",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "coinglass",
+                "status": "active",
+                "http_status": 200,
+                "message": "Working",
+                "response_time_ms": 287,
+                "checked_at": "2026-03-08T20:50:41.127612+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:41.127612+00:00",
+              "synced": true,
+              "last_sync_ago": "Never"
+            },
+            {
+              "id": "laevitas",
+              "capabilities": [
+                "options",
+                "futures"
+              ],
+              "domain": "laevitas.ch",
+              "is_new": false,
+              "name": "Laevitas",
+              "priority": 2,
+              "status": "error",
+              "type": "derivatives",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "laevitas",
+                "status": "error",
+                "http_status": 400,
+                "message": "Unexpected status: 400",
+                "response_time_ms": 606,
+                "checked_at": "2026-03-08T20:50:42.235308+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:42.235308+00:00",
+              "synced": false
+            },
+            {
+              "id": "velodata",
+              "capabilities": [
+                "derivatives",
+                "analytics"
+              ],
+              "domain": "velodata.app",
+              "is_new": true,
+              "name": "Velo Data",
+              "priority": 3,
+              "status": "error",
+              "type": "derivatives",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "velodata",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:42.736761+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:42.736761+00:00",
+              "synced": false
+            },
+            {
+              "id": "nansen",
+              "capabilities": [
+                "onchain",
+                "wallets",
+                "analytics"
+              ],
+              "domain": "nansen.ai",
+              "is_new": false,
+              "name": "Nansen",
+              "priority": 1,
+              "status": "error",
+              "type": "onchain",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "nansen",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:43.238181+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:43.238181+00:00",
+              "synced": false
+            },
+            {
+              "id": "arkham",
+              "capabilities": [
+                "onchain",
+                "entity"
+              ],
+              "domain": "arkm.io",
+              "is_new": false,
+              "name": "Arkham Intelligence",
+              "priority": 2,
+              "status": "error",
+              "type": "onchain",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "arkham",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:43.867954+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:43.867954+00:00",
+              "synced": false
+            },
+            {
+              "id": "dune",
+              "capabilities": [
+                "onchain",
+                "queries"
+              ],
+              "domain": "dune.com",
+              "is_new": false,
+              "name": "Dune Analytics",
+              "priority": 3,
+              "status": "error",
+              "type": "onchain",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "dune",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:44.368507+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:44.368507+00:00",
+              "synced": false
+            },
+            {
+              "id": "glassnode",
+              "capabilities": [
+                "onchain",
+                "metrics"
+              ],
+              "domain": "glassnode.com",
+              "is_new": false,
+              "name": "Glassnode",
+              "priority": 4,
+              "status": "error",
+              "type": "onchain",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "glassnode",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:44.869394+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:44.869394+00:00",
+              "synced": false
+            },
+            {
+              "id": "santiment",
+              "capabilities": [
+                "onchain",
+                "social"
+              ],
+              "domain": "santiment.net",
+              "is_new": false,
+              "name": "Santiment",
+              "priority": 5,
+              "status": "error",
+              "type": "onchain",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "santiment",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:45.370499+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:45.370499+00:00",
+              "synced": false
+            },
+            {
+              "id": "l2beat",
+              "capabilities": [
+                "l2",
+                "tvl",
+                "risk"
+              ],
+              "domain": "l2beat.com",
+              "is_new": false,
+              "name": "L2BEAT",
+              "priority": 1,
+              "status": "error",
+              "type": "l2",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "l2beat",
+                "status": "error",
+                "http_status": 401,
+                "message": "Unexpected status: 401",
+                "response_time_ms": 665,
+                "checked_at": "2026-03-08T20:50:46.538049+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:46.538049+00:00",
+              "synced": false
+            },
+            {
+              "id": "growthepie",
+              "capabilities": [
+                "l2",
+                "analytics"
+              ],
+              "domain": "growthepie.xyz",
+              "is_new": true,
+              "name": "growthepie",
+              "priority": 2,
+              "status": "error",
+              "type": "l2",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "growthepie",
+                "status": "error",
+                "http_status": 403,
+                "message": "Unexpected status: 403",
+                "response_time_ms": 405,
+                "checked_at": "2026-03-08T20:50:47.445464+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:47.445464+00:00",
+              "synced": false
+            },
+            {
+              "id": "artemis",
+              "capabilities": [
+                "chains",
+                "analytics"
+              ],
+              "domain": "artemis.xyz",
+              "is_new": true,
+              "name": "Artemis",
+              "priority": 3,
+              "status": "error",
+              "type": "l2",
+              "updated_at": "2026-03-08T18:47:29.275000",
+              "last_check": {
+                "source_id": "artemis",
+                "status": "unknown",
+                "message": "No health check configured",
+                "checked_at": "2026-03-08T20:50:47.945632+00:00"
+              },
+              "last_checked_at": "2026-03-08T20:50:47.945632+00:00",
+              "synced": false
+            }
+          ]
+        }
+      },
+      "timestamp": "2026-03-08T20:56:21.218540"
+    },
+    {
+      "test_name": "Discovery Health Check",
+      "success": false,
+      "details": {
+        "error": "timeout",
+        "timeout_seconds": 30
+      },
+      "timestamp": "2026-03-08T20:56:51.249638"
+    },
+    {
+      "test_name": "WebSocket Status",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 101,
+        "response_time_ms": 159,
+        "response_data": {
+          "ok": true,
+          "total_connections": 0,
+          "channels": {
+            "news": 0,
+            "breaking": 0,
+            "progress": 0,
+            "signals": 0,
+            "all": 0
+          }
+        }
+      },
+      "timestamp": "2026-03-08T20:56:51.409758"
+    },
+    {
+      "test_name": "Knowledge Graph Search - a16z",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 126,
+        "response_time_ms": 54,
+        "response_data": {
+          "results": [
+            {
+              "id": "fund:a16z",
+              "label": "a16z Crypto",
+              "type": "fund",
+              "entity_id": "a16z",
+              "slug": "a16z"
+            }
+          ],
+          "total": 1,
+          "query": "a16z"
+        }
+      },
+      "timestamp": "2026-03-08T20:56:51.464881"
+    },
+    {
+      "test_name": "Knowledge Graph Search - paradigm",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 139,
+        "response_time_ms": 75,
+        "response_data": {
+          "results": [
+            {
+              "id": "fund:paradigm",
+              "label": "Paradigm",
+              "type": "fund",
+              "entity_id": "paradigm",
+              "slug": "paradigm"
+            }
+          ],
+          "total": 1,
+          "query": "paradigm"
+        }
+      },
+      "timestamp": "2026-03-08T20:56:51.540682"
+    },
+    {
+      "test_name": "Knowledge Graph Search - jump crypto",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 154,
+        "response_time_ms": 62,
+        "response_data": {
+          "results": [
+            {
+              "id": "fund:jump-crypto",
+              "label": "Jump Crypto",
+              "type": "fund",
+              "entity_id": "jump-crypto",
+              "slug": "jump-crypto"
+            }
+          ],
+          "total": 1,
+          "query": "jump crypto"
+        }
+      },
+      "timestamp": "2026-03-08T20:56:51.603881"
+    },
+    {
+      "test_name": "Knowledge Graph Search - sequoia",
+      "success": true,
+      "details": {
+        "status_code": 200,
+        "expected_status": 200,
+        "response_size": 142,
+        "response_time_ms": 57,
+        "response_data": {
+          "results": [
+            {
+              "id": "fund:sequoia",
+              "label": "Sequoia Capital",
+              "type": "fund",
+              "entity_id": "sequoia",
+              "slug": "sequoia"
+            }
+          ],
+          "total": 1,
+          "query": "sequoia"
+        }
+      },
+      "timestamp": "2026-03-08T20:56:51.661723"
+    },
+    {
+      "test_name": "Graph Nodes",
+      "success": false,
+      "details": {
+        "status_code": 404,
+        "expected_status": 200,
+        "response_size": 22,
+        "response_time_ms": 53,
+        "response_data": {
+          "detail": "Not Found"
+        }
+      },
+      "timestamp": "2026-03-08T20:56:51.716196"
+    },
+    {
+      "test_name": "Graph Edges",
+      "success": false,
+      "details": {
+        "status_code": 404,
+        "expected_status": 200,
+        "response_size": 22,
+        "response_time_ms": 53,
+        "response_data": {
+          "detail": "Not Found"
+        }
+      },
+      "timestamp": "2026-03-08T20:56:51.770343"
+    }
+  ]
+}

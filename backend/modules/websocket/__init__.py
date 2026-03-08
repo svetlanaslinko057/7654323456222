@@ -258,6 +258,56 @@ async def broadcast_signal(signal: Dict[str, Any]):
     })
 
 
+async def broadcast_sentiment_alert(alert: Dict[str, Any]):
+    """
+    Broadcast sentiment shift alert.
+    Triggered when sentiment changes significantly (>20% in short period).
+    """
+    message = {
+        "type": "sentiment_alert",
+        "alert": {
+            "asset": alert.get("asset"),
+            "asset_name": alert.get("asset_name"),
+            "previous_sentiment": alert.get("previous"),
+            "current_sentiment": alert.get("current"),
+            "change_percent": alert.get("change_percent"),
+            "direction": "bullish" if alert.get("change_percent", 0) > 0 else "bearish",
+            "time_window": alert.get("time_window", "1h"),
+            "confidence": alert.get("confidence", "medium"),
+            "trigger_sources": alert.get("sources", []),
+        },
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "priority": "high" if abs(alert.get("change_percent", 0)) > 30 else "medium"
+    }
+    await manager.broadcast("signals", message)
+    await manager.send_to_all(message)
+    logger.info(f"[WS] Sentiment alert broadcast: {alert.get('asset')} {alert.get('change_percent')}%")
+
+
+async def broadcast_investment_alert(investment: Dict[str, Any]):
+    """
+    Broadcast new investment detection alert.
+    Triggered when parser detects new VC investment.
+    """
+    message = {
+        "type": "investment_alert",
+        "investment": {
+            "fund": investment.get("fund"),
+            "fund_name": investment.get("fund_name"),
+            "project": investment.get("project"),
+            "project_name": investment.get("project_name"),
+            "amount_usd": investment.get("amount"),
+            "round": investment.get("round"),
+            "source": investment.get("source"),
+        },
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "priority": "high"
+    }
+    await manager.broadcast("signals", message)
+    await manager.send_to_all(message)
+    logger.info(f"[WS] Investment alert: {investment.get('fund_name')} -> {investment.get('project_name')}")
+
+
 # ═══════════════════════════════════════════════════════════════
 # REST API for WebSocket Status
 # ═══════════════════════════════════════════════════════════════
