@@ -228,11 +228,8 @@ const ForceGraphViewer = ({ centerEntity = null }) => {
         
         // Transform edges to links with multiple connections for visual effect
         const links = [];
-        const addLink = (source, target, value) => {
-          links.push({ source, target, value });
-        };
         
-        // Group edges by source-target pair and create multiple lines
+        // Group edges by source-target pair and count them properly
         const edgeGroups = new Map();
         data.edges.forEach(edge => {
           const key = `${edge.source}|${edge.target}`;
@@ -242,21 +239,24 @@ const ForceGraphViewer = ({ centerEntity = null }) => {
           edgeGroups.get(key).push(edge);
         });
         
-        // Create links with multiplier based on weight
+        // Create links - ONE line per investment/relation (not artificially multiplied)
+        // Multiple edges in API = multiple actual investments = multiple visual lines
         edgeGroups.forEach((edges, key) => {
           const [source, target] = key.split('|');
           if (!nodeMap.has(source) || !nodeMap.has(target)) return;
           
-          // Calculate multiplier based on number of edges and weight
-          const avgWeight = edges.reduce((sum, e) => sum + (e.weight || 1), 0) / edges.length;
-          let multiplier = Math.max(1, Math.floor(avgWeight * 10) + edges.length);
-          multiplier = Math.min(multiplier, 20); // Cap at 20 lines
-          
-          for (let i = 0; i < multiplier; i++) {
-            // Alternate between positive and negative values for red/green colors
-            const value = edges[0].value !== undefined ? edges[0].value : (Math.random() * 200 - 100);
-            addLink(source, target, value);
-          }
+          // Each edge from API represents a REAL investment/relation
+          // So we create exactly that many lines
+          edges.forEach((edge, index) => {
+            const value = edge.value !== undefined ? edge.value : (Math.random() * 200 - 100);
+            links.push({ 
+              source, 
+              target, 
+              value,
+              metadata: edge.metadata || {},
+              relation: edge.relation || 'invested_in'
+            });
+          });
         });
         
         // Process links for curved lines (multiple connections)

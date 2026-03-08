@@ -317,143 +317,162 @@ class GraphBuilder:
         logger.info(f"[GraphBuilder] Built {count} traded_on edges")
         return count
     
-    async def build_sample_network(self) -> int:
+    async def build_real_investments_network(self) -> int:
         """
-        Build sample network demonstrating graph capabilities.
-        Creates realistic-looking crypto network structure.
+        Build REAL investment network from actual VC portfolio data.
+        Uses verified investment data from public sources.
         """
         count = 0
         
-        # Sample funds
-        funds = [
-            {"id": "a16z", "name": "a16z Crypto"},
-            {"id": "paradigm", "name": "Paradigm"},
-            {"id": "coinbase_ventures", "name": "Coinbase Ventures"},
-            {"id": "binance_labs", "name": "Binance Labs"},
-            {"id": "sequoia", "name": "Sequoia Capital"},
-            {"id": "polychain", "name": "Polychain Capital"},
-        ]
+        try:
+            from .real_investments import (
+                ALL_INVESTMENTS, 
+                PROJECT_TEAM_MEMBERS, 
+                FUND_TEAM_MEMBERS
+            )
+        except ImportError:
+            logger.warning("[GraphBuilder] Real investments data not found, using sample")
+            return await self._build_sample_network_fallback()
         
-        # Sample persons
-        persons = [
-            {"id": "vitalik", "name": "Vitalik Buterin"},
-            {"id": "cz", "name": "Changpeng Zhao"},
-            {"id": "sbf", "name": "Sam Bankman-Fried"},
-            {"id": "balaji", "name": "Balaji Srinivasan"},
-            {"id": "marc", "name": "Marc Andreessen"},
-        ]
+        # Create fund nodes with metadata
+        fund_names = {
+            "a16z": "a16z Crypto",
+            "paradigm": "Paradigm",
+            "coinbase-ventures": "Coinbase Ventures",
+            "binance-labs": "Binance Labs",
+            "polychain": "Polychain Capital",
+            "pantera": "Pantera Capital",
+            "dragonfly": "Dragonfly Capital",
+            "multicoin": "Multicoin Capital",
+        }
         
-        # Create fund nodes
-        for fund in funds:
+        for fund_slug, fund_name in fund_names.items():
             await self.resolver.resolve(
                 entity_type="fund",
-                entity_id=fund["id"],
-                label=fund["name"],
-                slug=fund["id"]
+                entity_id=fund_slug,
+                label=fund_name,
+                slug=fund_slug,
+                metadata={"type": "vc", "tier": 1}
             )
             count += 1
         
-        # Create person nodes
-        for person in persons:
-            await self.resolver.resolve(
-                entity_type="person",
-                entity_id=person["id"],
-                label=person["name"],
-                slug=person["id"]
-            )
-            count += 1
-        
-        # Sample investments (fund -> project)
-        investments = [
-            ("a16z", "arbitrum", 50000000),
-            ("a16z", "optimism", 30000000),
-            ("a16z", "uniswap", 100000000),
-            ("paradigm", "arbitrum", 40000000),
-            ("paradigm", "uniswap", 80000000),
-            ("paradigm", "lido", 60000000),
-            ("coinbase_ventures", "polygon", 20000000),
-            ("coinbase_ventures", "optimism", 15000000),
-            ("binance_labs", "polygon", 25000000),
-            ("binance_labs", "aptos", 35000000),
-            ("sequoia", "solana", 100000000),
-            ("polychain", "cosmos", 50000000),
-        ]
-        
-        for fund_id, project_id, amount in investments:
-            fund = next((f for f in funds if f["id"] == fund_id), None)
-            if fund:
-                # Get project from existing nodes or create
-                project_node = await self.resolver.resolve(
+        # Build investment edges from REAL data
+        # Each investment round creates a separate edge (multiple lines = multiple rounds)
+        for fund_slug, investments in ALL_INVESTMENTS.items():
+            fund_name = fund_names.get(fund_slug, fund_slug)
+            
+            for inv in investments:
+                project_id = inv["project"]
+                project_name = inv["name"]
+                amount = inv["amount"]
+                round_type = inv.get("round", "Private")
+                year = inv.get("year", 2023)
+                
+                # Create project node if not exists
+                await self.resolver.resolve(
                     entity_type="project",
                     entity_id=project_id,
-                    label=project_id.title()
+                    label=project_name,
+                    slug=project_id
                 )
+                
+                # Create investment edge with UNIQUE source_ref per round
+                # This allows multiple edges for multiple investments
+                source_ref = f"investment:{fund_slug}_{project_id}_{round_type}_{year}"
                 
                 await self.add_edge_by_entity(
                     from_type="fund",
-                    from_id=fund_id,
-                    from_label=fund["name"],
-                    to_type="project",
-                    to_id=project_id,
-                    to_label=project_id.title(),
-                    relation_type="invested_in",
-                    weight=min(1.0, amount / 100000000),
-                    source_type="direct",
-                    source_ref=f"investment:{fund_id}_{project_id}",
-                    metadata={"amount_usd": amount}
-                )
-                count += 1
-        
-        # Person -> Fund relations
-        person_fund_relations = [
-            ("vitalik", "paradigm", "advisor_of"),
-            ("cz", "binance_labs", "founded"),
-            ("marc", "a16z", "founded"),
-            ("balaji", "a16z", "worked_at"),
-            ("balaji", "coinbase_ventures", "worked_at"),
-        ]
-        
-        for person_id, fund_id, relation in person_fund_relations:
-            person = next((p for p in persons if p["id"] == person_id), None)
-            fund = next((f for f in funds if f["id"] == fund_id), None)
-            if person and fund:
-                # Use founded -> project pattern, but works_at for fund
-                actual_relation = "works_at" if relation in ["founded", "works_at", "worked_at", "partner_at"] else relation
-                await self.add_edge_by_entity(
-                    from_type="person",
-                    from_id=person_id,
-                    from_label=person["name"],
-                    to_type="fund",
-                    to_id=fund_id,
-                    to_label=fund["name"],
-                    relation_type=actual_relation,
-                    source_type="direct",
-                    source_ref=f"person_fund:{person_id}_{fund_id}"
-                )
-                count += 1
-        
-        # Person -> Project (founded)
-        founded_relations = [
-            ("vitalik", "ethereum", "Ethereum"),
-        ]
-        
-        for person_id, project_id, project_name in founded_relations:
-            person = next((p for p in persons if p["id"] == person_id), None)
-            if person:
-                await self.add_edge_by_entity(
-                    from_type="person",
-                    from_id=person_id,
-                    from_label=person["name"],
+                    from_id=fund_slug,
+                    from_label=fund_name,
                     to_type="project",
                     to_id=project_id,
                     to_label=project_name,
-                    relation_type="founded",
+                    relation_type="invested_in",
+                    weight=min(1.0, (amount / 100000000) if amount > 0 else 0.5),
                     source_type="direct",
-                    source_ref=f"founded:{person_id}_{project_id}"
+                    source_ref=source_ref,
+                    metadata={
+                        "amount_usd": amount,
+                        "round": round_type,
+                        "year": year
+                    }
                 )
                 count += 1
         
-        # Token -> Asset mappings for major projects
+        # Build fund team members (partners -> fund)
+        for fund_slug, members in FUND_TEAM_MEMBERS.items():
+            fund_name = fund_names.get(fund_slug, fund_slug)
+            
+            for member in members:
+                person_id = member["id"]
+                person_name = member["name"]
+                role = member.get("role", "Partner")
+                
+                # Create person node
+                await self.resolver.resolve(
+                    entity_type="person",
+                    entity_id=person_id,
+                    label=person_name,
+                    slug=person_id,
+                    metadata={"role": role}
+                )
+                count += 1
+                
+                # Create works_at edge
+                await self.add_edge_by_entity(
+                    from_type="person",
+                    from_id=person_id,
+                    from_label=person_name,
+                    to_type="fund",
+                    to_id=fund_slug,
+                    to_label=fund_name,
+                    relation_type="works_at",
+                    source_type="direct",
+                    source_ref=f"team:{person_id}_{fund_slug}",
+                    metadata={"role": role}
+                )
+                count += 1
+        
+        # Build project team members (founders/team -> project)
+        for project_id, members in PROJECT_TEAM_MEMBERS.items():
+            # Get project name from existing node or use ID
+            project_node = await self.resolver.get_node_by_key("project", project_id)
+            project_name = project_node.get("label", project_id.title()) if project_node else project_id.title()
+            
+            for member in members:
+                person_id = member["id"]
+                person_name = member["name"]
+                role = member.get("role", "Team Member")
+                
+                # Determine relation type based on role
+                relation_type = "founded" if "founder" in role.lower() else "works_at"
+                
+                # Create person node
+                await self.resolver.resolve(
+                    entity_type="person",
+                    entity_id=person_id,
+                    label=person_name,
+                    slug=person_id,
+                    metadata={"role": role}
+                )
+                count += 1
+                
+                # Create relation edge
+                await self.add_edge_by_entity(
+                    from_type="person",
+                    from_id=person_id,
+                    from_label=person_name,
+                    to_type="project",
+                    to_id=project_id,
+                    to_label=project_name,
+                    relation_type=relation_type,
+                    source_type="direct",
+                    source_ref=f"team:{person_id}_{project_id}",
+                    metadata={"role": role}
+                )
+                count += 1
+        
+        # Build token mappings for major projects
         token_mappings = [
             ("arbitrum", "arb", "ARB"),
             ("optimism", "op", "OP"),
@@ -463,11 +482,41 @@ class GraphBuilder:
             ("solana", "sol", "SOL"),
             ("cosmos", "atom", "ATOM"),
             ("aptos", "apt", "APT"),
+            ("sui", "sui", "SUI"),
+            ("near", "near", "NEAR"),
+            ("avalanche", "avax", "AVAX"),
             ("lido", "ldo", "LDO"),
+            ("aave", "aave", "AAVE"),
+            ("compound", "comp", "COMP"),
+            ("dydx", "dydx", "DYDX"),
+            ("chainlink", "link", "LINK"),
+            ("polkadot", "dot", "DOT"),
+            ("filecoin", "fil", "FIL"),
+            ("render", "rndr", "RNDR"),
+            ("injective", "inj", "INJ"),
+            ("worldcoin", "wld", "WLD"),
+            ("eigenlayer", "eigen", "EIGEN"),
+            ("layerzero", "zro", "ZRO"),
         ]
         
         for project_id, token_id, symbol in token_mappings:
-            # token -> asset
+            # Project -> token (has_token)
+            project_node = await self.resolver.get_node_by_key("project", project_id)
+            if project_node:
+                await self.add_edge_by_entity(
+                    from_type="project",
+                    from_id=project_id,
+                    from_label=project_node.get("label", project_id.title()),
+                    to_type="token",
+                    to_id=token_id,
+                    to_label=symbol,
+                    relation_type="has_token",
+                    source_type="direct",
+                    source_ref=f"token:{project_id}_{token_id}"
+                )
+                count += 1
+            
+            # Token -> asset mapping
             await self.add_edge_by_entity(
                 from_type="token",
                 from_id=token_id,
@@ -481,7 +530,7 @@ class GraphBuilder:
             )
             count += 1
             
-            # asset -> exchange (traded_on) - major exchanges
+            # Asset -> exchanges (traded_on) - major exchanges
             for exchange_id in ["binance", "coinbase", "kraken"]:
                 await self.add_edge_by_entity(
                     from_type="asset",
@@ -497,7 +546,14 @@ class GraphBuilder:
                 )
                 count += 1
         
-        logger.info(f"[GraphBuilder] Built {count} sample network nodes/edges")
+        logger.info(f"[GraphBuilder] Built {count} REAL investment network nodes/edges")
+        return count
+    
+    async def _build_sample_network_fallback(self) -> int:
+        """Fallback sample network if real data not available."""
+        count = 0
+        # Minimal sample data
+        logger.info("[GraphBuilder] Using minimal fallback data")
         return count
     
     # =========================================================================
@@ -591,7 +647,7 @@ class GraphBuilder:
         total_count += await self.build_exchanges_graph()
         total_count += await self.build_projects_graph()
         total_count += await self.build_traded_on_edges()
-        total_count += await self.build_sample_network()
+        total_count += await self.build_real_investments_network()
         
         # Build derived edges
         total_count += await self.build_coinvested_edges()

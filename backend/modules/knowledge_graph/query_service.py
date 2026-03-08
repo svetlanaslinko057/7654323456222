@@ -268,21 +268,16 @@ class GraphQueryService:
                         "metadata": edge.get("metadata", {})
                     })
         
-        # Deduplicate edges (keep unique source-target-relation)
-        seen_edges = set()
-        unique_edges = []
-        for edge in edges_list:
-            edge_key = f"{edge['source']}|{edge['target']}|{edge['relation']}"
-            if edge_key not in seen_edges:
-                seen_edges.add(edge_key)
-                unique_edges.append(edge)
+        # Keep ALL edges - multiple edges between same nodes represent multiple investments/relations
+        # We DON'T deduplicate to show real investment count
+        # Previously we deduped by source|target|relation which lost multi-round investments
         
         return GraphNetworkResponse(
             nodes=list(nodes_dict.values()),
-            edges=unique_edges,
+            edges=edges_list,  # Return ALL edges (not deduplicated)
             stats={
                 "node_count": len(nodes_dict),
-                "edge_count": len(unique_edges),
+                "edge_count": len(edges_list),
                 "center": f"{center_type}:{center_id}" if center_type else None,
                 "depth": depth
             }
