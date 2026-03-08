@@ -322,23 +322,33 @@ class DataSourceHealthChecker:
             }
     
     async def check_all_sources(self) -> Dict[str, Any]:
-        """Check all configured data sources"""
+        """Check all configured data sources in parallel"""
         results = []
         
         # Get all sources from DB
         cursor = self.db.data_sources.find({}, {"_id": 0})
         sources = await cursor.to_list(length=100)
         
-        # Check each source
-        for source in sources:
-            source_id = source.get("id")
-            if source_id:
-                result = await self.check_single_source(source_id)
-                results.append(result)
-                # Small delay to avoid rate limits
-                await asyncio.sleep(0.5)
+        # Check sources in parallel (batches of 10)
+        batch_size = 10
+        for i in range(0, len(sources), batch_size):
+            batch = sources[i:i+batch_size]
+            tasks = [self.check_single_source(s.get("id")) for s in batch if s.get("id")]
+            batch_results = await asyncio.gather(*tasks, return_exceptions=True)
+            
+            for result in batch_results:
+                if isinstance(result, Exception):
+                    results.append({
+                        "source_id": "unknown",
+                        "status": "error",
+                        "message": str(result)[:100],
+                        "checked_at": datetime.now(timezone.utc).isoformat()
+                    })
+                else:
+                    results.append(result)
         
-        # Update statuses in database
+        # Update statuses in database (parallel)
+        update_tasks = []
         for result in results:
             status = result["status"]
             
@@ -354,14 +364,19 @@ class DataSourceHealthChecker:
             else:
                 db_status = "error"
             
-            await self.db.data_sources.update_one(
-                {"id": result["source_id"]},
-                {"$set": {
-                    "status": db_status,
-                    "last_check": result,
-                    "last_checked_at": result["checked_at"]
-                }}
+            update_tasks.append(
+                self.db.data_sources.update_one(
+                    {"id": result["source_id"]},
+                    {"$set": {
+                        "status": db_status,
+                        "last_check": result,
+                        "last_checked_at": result["checked_at"]
+                    }}
+                )
             )
+        
+        if update_tasks:
+            await asyncio.gather(*update_tasks)
         
         # Summary
         summary = {
